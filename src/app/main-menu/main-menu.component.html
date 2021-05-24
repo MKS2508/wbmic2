@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Product example for Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/product/">
+
+    <!-- Bootstrap core CSS -->
+
+    <!-- Custom styles for this template -->
+</head>
+<div class="blur">
+
+    <body>
+
+
+        <div class="title">
+            <div class="col-md-5 p-lg-5 mx-auto my-2">
+
+                <h1 class="display-4 font-weight-normal">Dispositivos conectados:</h1>
+
+                <hr>
+
+
+            </div>
+            <!----
+
+   -->
+
+
+        </div>
+
+
+        <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3 "
+            [ngClass]="{ 'd-md-flex flex-md-equal w-100 my-md-3 ps-md-3': flag, 'responsive': !flag} ">
+            <div *ngFor="let device of connectedDevices">
+           
+
+                <div *ngIf="device.type == 'sensor'">
+                    <div class="sensorDevice">
+                        <div class="flip ">
+                            <div class="front">
+                                <h1 class="p-3 mb-2 bg-dark text-danger " style="border-radius:10px;"><img src="https://img.icons8.com/fluent/48/000000/humidity.png" /> Sensor Temp Hum <img src="https://img.icons8.com/wired/64/000000/temperature-sensitive.png" style="margin-bottom: 8px;" /></h1>
+    
+                                <img src="https://img.icons8.com/dusk/128/000000/humidity.png" style="margin-top: 10%; width: 33%;" />
+                                <img src="https://img.icons8.com/dusk/128/000000/temperature-sensitive.png" style="margin-top: 10%; width: 33%;" />
+                            </div>
+                            <div class="back ">
+                                <h2>Dispositivo RGB conectado a placa con ID: x</h2>
+                                <p>Usando los pines: [1, 2, 3]</p>
+                                <br>
+                                <a href=" ">Cambiar configuración del dispositivo</a>
+                                <hr>
+    
+    
+                                <div class="container2">
+                                    <div class="btn"><a href="#">Encender</a></div>
+                                    <div class="btn"><a href="#">Apagar</a></div>
+                                    <div class="btn"><a href="#">Cambiar de color</a></div>
+    
+                                </div>
+    
+    
+    
+    
+    
+                            </div>
+                        </div>
+                    </div> 
+    
+                </div>
+              
+                <div *ngIf="device.type == 'lamp'">
+                    <div class=" me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center "
+                        [ngClass]="{ ' me-md-3 pt-3 px-3 pt-md-5 px-md-5': flag, 'responsive': !flag} ">
+                        <div class=" mx-auto " style="width: 100%; height: 80%; border-radius: 21px ">
+                            <div class="my-3 p-3 " [ngClass]="{ 'my-3 p-3': flag, 'responsive': !flag} ">
+                                <div class="rgbDevice">
+                                    <div class="flip ">
+                                        <div class="front">
+                                            <h1 class="p-3 mb-2 bg-dark text-danger " style="border-radius:10px;">
+                                                Iluminación General <img
+                                                    src="https://img.icons8.com/color/48/000000/reflector-bulb.png" />
+                                            </h1>
+                                            <img src="https://img.icons8.com/dusk/256/000000/spiral-bulb.png"
+                                                width="240px" />
+                                        </div>
+                                        <div class="back ">
+                                            <h2>Dispositivo RGB conectado a placa con ID: x</h2>
+                                            <p>Usando los pines: [1, 2, 3]</p>
+                                            <br>
+                                            <a href=" ">Cambiar configuración del dispositivo</a>
+                                            <hr>
+                                            <div class="container2 ">
+                                                <div class="btn ">
+                                                    <a href="# ">
+                                                        ON
+                                                        <img
+                                                            src="https://img.icons8.com/dusk/50/000000/switch-off.png " />
+                                                    </a>
+                                                </div>
+                                                <div class="btn ">
+                                                    <a href="# ">
+                                                        OFF
+                                                        <img width="50px"
+                                                            src="https://img.icons8.com/dusk/64/000000/switch-on.png " />
+                                                    </a>
+                                                </div>
+                                                <div class="btn "><a href="# ">Cambiar de color</a></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="device.type == 'rgb'">
+
+                    <div class=" me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center "
+                        [ngClass]="{ ' me-md-3 pt-3 px-3 pt-md-5 px-md-5': flag, 'responsive': !flag} ">
+                        <div class=" mx-auto " style="width: 100%; height: 80%; border-radius: 21px ">
+                            <div class="my-3 p-3 " [ngClass]="{ 'my-3 p-3': flag, 'responsive': !flag} ">
+                                <div class="rgbDevice ">
+                                    <div class="flip ">
+                                        <div class="front ">
+                                            <h1 class="p-3 mb-2 bg-dark text-danger " style="border-radius:10px; ">
+                                                 {{device.name}} <img class="rotate "
+                                                    src="https://img.icons8.com/fluent/48/000000/color-mode.png "
+                                                    style="margin-bottom: 8px; " /></h1>
+
+                                            <img src="https://img.icons8.com/color/240/000000/rgb-lamp.png " />
+
+                                        </div>
+                                        <div class="back ">
+                                            <h2> Dispositivo RGB <img
+                                                    src="https://img.icons8.com/fluent/48/000000/color-mode.png " />
+                                                conectado a dispositivo con ID: {{device.boardID}}</h2>
+                                            <p>Usando los pines: [{{device.pines}}]</p>
+                                            <br>
+                                            <input readonly *ngIf="mostrarColor == true" type="text" class="form-control" [cpPosition]="'bottom'"
+                                                [(colorPicker)]="color"  (colorPickerChange)="sendAction(device.boardID, device.address, 'color', color)"[style.background]="color"
+                                                [value]="color">
+                                            <a href=" ">Cambiar configuración del dispositivo</a>
+                                            <hr>
+
+
+                                            <div class="container2 ">
+                                                <div class="btn ">
+                                                    <a (click)="sendAction(device.boardID, device.address, 'on', '')">
+                                                        ON
+                                                        <img src="https://img.icons8.com/dusk/50/000000/switch-off.png " />
+                                                    </a>
+                                                </div>
+                                                <div class="btn ">
+                                                    <a (click)="sendAction(device.boardID, device.address, 'off', '')">
+                                                        OFF
+                                                        <img width="50px"
+                                                            src="https://img.icons8.com/dusk/64/000000/switch-on.png " />
+                                                    </a>
+                                                </div>
+                                                <div class="btn ">
+                                                    <a (click)="cambiarColor()"><img class="rotate "
+                                                            src="https://img.icons8.com/officexs/30/000000/rgb-circle-1.png " /></a>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="device.type == 'lamp1'">
+                    <div class=" me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center "
+                        [ngClass]="{ ' me-md-3 pt-3 px-3 pt-md-5 px-md-5': flag, 'responsive': !flag} ">
+                        <div class=" mx-auto " style="width: 100%; height: 80%; border-radius: 21px ">
+                            <div class="my-3 p-3 " [ngClass]="{ 'my-3 p-3': flag, 'responsive': !flag} ">
+                                <div class="rgbDevice ">
+                                    <div class="flip ">
+                                        <div class="front "
+                                            style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png); ">
+                                            <h1 class="p-3 mb-2 bg-dark text-danger " style="border-radius:10px; ">
+                                                Lámpara <img
+                                                    src="https://img.icons8.com/doodle/50/000000/desk-lamp--v1.png "
+                                                    style="margin-bottom: 8px; " /></h1>
+
+                                            <img src="https://img.icons8.com/color/240/000000/pixar-lamp-2.png " />
+
+                                        </div>
+                                        <div class="back ">
+                                            <h2>Dispositivo RGB conectado a placa con ID: x</h2>
+                                            <p>Usando los pines: [1, 2, 3]</p>
+                                            <br>
+                                            <a href=" ">Cambiar configuración del dispositivo</a>
+                                            <hr>
+
+
+
+                                            <div class="container2 ">
+                                                <div class="btn ">
+                                                    <a href="# ">
+                                                        ON
+                                                        <img
+                                                            src="https://img.icons8.com/dusk/50/000000/switch-off.png " />
+                                                    </a>
+                                                </div>
+                                                <div class="btn ">
+                                                    <a href="# ">
+                                                        OFF
+                                                        <img width="50px"
+                                                            src="https://img.icons8.com/dusk/64/000000/switch-on.png " />
+                                                    </a>
+                                                </div>
+                                                <div class="btn "><a href="# ">Cambiar de color</a></div>
+                                                
+                                                                                    </div>
+
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div *ngIf="device.type == 'relay'">
+                    <div class=" me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center "
+                    [ngClass]="{ ' me-md-3 pt-3 px-3 pt-md-5 px-md-5': flag, 'responsive': !flag} ">
+                    <div class=" mx-auto " style="width: 100%; height: 80%; border-radius: 21px ">
+                        <div class="my-3 p-3 " [ngClass]="{ 'my-3 p-3': flag, 'responsive': !flag} ">
+                            <div class="rgbDevice ">
+                                <div class="flip ">
+                                    <div class="front "
+                                        style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png); ">
+                                        <h1 class="p-3 mb-2 bg-dark text-danger " style="border-radius:10px; ">
+                                             {{device.name}} <img class="rotate "
+                                                src="https://img.icons8.com/fluent/50/000000/relay.png"
+                                                style="margin-bottom: 6px; " /></h1>
+                                        <img src="https://img.icons8.com/dusk/256/000000/relay.png " />
+    
+                                    </div>
+                                    <div class="back ">
+                                        <h2>Dispositivo Relé conectado a placa con ID: {{device.boardID}}</h2>
+                                        <p>Usando los pines: [{{device.pines}}]</p>
+                                        <br>
+                                        <a href=" ">Cambiar configuración del dispositivo</a>
+                                        <hr>
+    
+    
+    
+                                        <div class="container2 ">
+                                            <div class="btn ">
+                                                <a  (click)="sendAction(device.boardID, device.address, 'open', '')">
+                                                    OPEN
+                                                    <img src="https://img.icons8.com/dusk/50/000000/switch-off.png " />
+                                                </a>
+                                            </div>
+                                            <div class="btn ">
+                                                <a (click)="sendAction(device.boardID, device.address, 'close', '')">
+                                                    CLOSE
+                                                    <img width="50px"
+                                                        src="https://img.icons8.com/dusk/64/000000/switch-on.png " />
+                                                </a>
+                                            </div>
+    
+                                        </div>
+    
+    
+    
+    
+    
+    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+    
+                    </div>
+                </div>
+                </div>
+                <div *ngIf="device.type == 'buzzer'">
+                    <div class=" me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center "
+                    [ngClass]="{ ' me-md-3 pt-3 px-3 pt-md-5 px-md-5': flag, 'responsive': !flag} ">
+                    <div class=" mx-auto " style="width: 100%; height: 80%; border-radius: 21px ">
+                        <div class="my-3 p-3 " [ngClass]="{ 'my-3 p-3': flag, 'responsive': !flag} ">
+                            <div class="rgbDevice ">
+                                <div class="flip ">
+                                    <div class="front "
+                                        style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png); ">
+                                        <h1 class="p-3 mb-2 bg-dark text-danger " style="border-radius:10px; "> Zumbador
+                                            <img src="https://img.icons8.com/dusk/64/000000/signal-horn.png" width=48px
+                                                style="margin-bottom: 8px; " /></h1>
+    
+                                        <img src="https://img.icons8.com/color/250/000000/buzzer.png " />
+                                    </div>
+                                    <div class="back ">
+                                        <h2>Dispositivo RGB conectado a placa con ID: x</h2>
+                                        <p>Usando los pines: [1, 2, 3]</p>
+                                        <br>
+                                        <a href=" ">Cambiar configuración del dispositivo</a>
+                                        <hr>
+    
+    
+    
+                                        <div class="container2 ">
+                                            <div class="btn ">
+                                                <a href="# ">
+                                                    ON
+                                                    <img src="https://img.icons8.com/dusk/50/000000/switch-off.png " />
+                                                </a>
+                                            </div>
+                                            <div class="btn ">
+                                                <a href="# ">
+                                                    OFF
+                                                    <img width="50px"
+                                                        src="https://img.icons8.com/dusk/64/000000/switch-on.png " />
+                                                </a>
+                                            </div>
+                                            <div class="btn "><a href="# ">Cambiar de color</a></div>
+    
+                                        </div>
+    
+    
+    
+    
+    
+    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+                </div>
+                <div *ngIf="device.type == 'custom'"> 
+
+            <div class=" me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center "
+            [ngClass]="{ ' me-md-3 pt-3 px-3 pt-md-5 px-md-5': flag, 'responsive': !flag} ">
+            <div class=" mx-auto " style="width: 100%; height: 80%; border-radius: 21px ">
+                <div class="my-3 p-3 " [ngClass]="{ 'my-3 p-3': flag, 'responsive': !flag} ">
+                    <div class="rgbDevice ">
+                        <div class="flip ">
+                            <div class="front "
+                                style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png); ">
+                                <h1 class="p-3 mb-2 bg-dark text-danger " style="border-radius:10px; "> <img
+                                        src="https://img.icons8.com/dotty/50/000000/arduino-uno-board.png" />
+                                    Dispositivo Custom <img class="rotate "
+                                        src="https://img.icons8.com/fluent/50/000000/arduino.png"
+                                        style="margin-bottom: 8px; " /></h1>
+                                <img src="../../assets/mcu.png " width=30% style="margin-top: 8%; " />
+
+                            </div>
+                            <div class="back ">
+                                <h2>Dispositivo RGB conectado a placa con ID: x</h2>
+                                <p>Usando los pines: [1, 2, 3]</p>
+                                <br>
+                                <a href=" ">Cambiar configuración del dispositivo</a>
+                                <hr>
+
+
+                                <div class="container2 ">
+                                    <div class="btn ">
+                                        <a href="# ">
+                                            ON
+                                            <img src="https://img.icons8.com/dusk/50/000000/switch-off.png " />
+                                        </a>
+                                    </div>
+                                    <div class="btn ">
+                                        <a href="# ">
+                                            OFF
+                                            <img width="50px"
+                                                src="https://img.icons8.com/dusk/64/000000/switch-on.png " />
+                                        </a>
+                                    </div>
+                                    <div class="btn "><a href="# ">Cambiar de color</a></div>
+
+                                </div>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <footer class="container py-5"
+            style="background-color: #263238; border-radius: 21px; width:93%; text-align:center">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="d-block mb-2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+                        <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+                        <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+                        <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+                        <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+                        <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+                    </svg>
+                    <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+                </div>
+                <div class=" col-sm-4 col-md  col-6 col">
+                    <h5 class="headin5_amrc col_white_amrc pt2"> Project Documentation </h5>
+
+                    <!--headin5_amrc-->
+                    <ul class="footer_ul_amrc">
+                        <li><a href="http://webenlance.com">API REST Source Code</a></li>
+                        <li><a href="http://webenlance.com">FRONT Source Code</a></li>
+                        <li><a href="http://webenlance.com">Firmata Web</a></li>
+                        <li><a href="http://webenlance.com">MQTT Broker</a></li>
+                        <li><a href="http://webenlance.com">Johnny Five Library</a></li>
+                        <li><a href="http://webenlance.com">ESP8266 Development Board</a></li>
+                    </ul>
+                    <!--footer_ul_amrc ends here-->
+                </div>
+
+            </div>
+        </footer>
+
+
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+        <script src="../../assets/js/vendor/popper.min.js"></script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <script src="../../assets/js/vendor/holder.min.js"></script>
+        <script>
+            Holder.addTheme('thumb', {
+                bg: '#55595c',
+                fg: '#eceeef',
+                text: 'Thumbnail'
+            });
+        </script>
+    </body>
+</div>
+
+</html>

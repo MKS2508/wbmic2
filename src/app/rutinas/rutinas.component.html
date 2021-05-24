@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APP</title>
+</head>
+
+
+<div class="blur">
+
+    <main>
+        <div class="bigWrapper">
+
+
+            <ng-template #content let-modal>
+
+
+                <div class="card2">
+                    <form>
+                        <div class="form-group" style="text-align:center;">
+                            <label>Nombre de la accion: </label>
+                            <div class="input-group">
+                                <input class="form-control" placeholder="192.168.1.1" type="text" [formControl]="nombre">
+                            </div>
+                            <label>ID del dispositivo conectado: </label>
+                            <div class="input-group">
+                                <input class="form-control" placeholder="3030" type="text" [formControl]="deviceID">
+                            </div>
+
+                            <label>Acción</label>
+                            <div class="input-group">
+                                <input class="form-control" placeholder="3030" type="text" [formControl]="accion">
+                            </div>
+
+                            <label>Fecha</label>
+                            <div class="input-group">
+                                <input class="form-control" type="date" [formControl]="fecha">
+                            </div>
+                            <label>Hora</label>
+                            <div class="input-group">
+                                <input class="form-control" type="time" [formControl]="hora">
+                            </div>
+                            <label>Repetición</label>
+                            <div class="input-group">
+                                <input class="form-control" placeholder="3030" type="text" [formControl]="repeticion">
+                            </div>
+                        </div>
+                        <button style="margin-left: 35%;" type="button" class="btn btn-outline-primary" (click)=" insertNew() " (click)="modal.close( 'Save click') ">Guardar</button>
+
+                    </form>
+                </div>
+
+
+
+            </ng-template>
+            <div class="bigCard" style="margin-top: 0;">
+
+                <div class="title">
+                    <div class="col-md-5 p-lg-5 mx-auto my-2">
+
+
+                        <h1 class="display-4 font-weight-normal ">Agregar nuevas rutinas</h1>
+                        <hr>
+                        <button class="btn btn-lg btn-outline-primary " (click)="open(content) ">Crear rutina</button>
+
+
+                        <p>
+                            <img src="https://img.icons8.com/ios-filled/50/000000/integrated-circuit.png" /> Un dispositivo puede contener múltiples configuraciones.
+                        </p>
+
+                        <hr>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                </div>
+
+                <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3 " [ngClass]="{ 'd-md-flex flex-md-equal w-100 my-md-3 ps-md-3': flag, 'responsive': !flag} ">
+
+                    <div class="container">
+                        <div class="card>">
+                            <table style="background-color: white" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Dispositivo</th>
+                                        <th scope="col">Accion</th>
+                                        <th scope="col">Hora</th>
+                                        <th scope="col">Repeticion</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let country of countries; index as i">
+                                        <th scope="row">{{ i + 1 }}</th>
+                                        <td>
+                                            <img src="../../assets/mcu2.png " class="mr-2" style="width: 20px"> {{ country.name }}
+                                        </td>
+                                        <td>{{ country.deviceID }}</td>
+                                        <td>{{ country.action }}</td>
+                                        <td>{{ country.time }}</td>
+                                        <td>{{ country.repeat}}</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+    </main>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js " integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin=" anonymous "></script>
+
+</html>

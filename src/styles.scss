@@ -1,0 +1,44 @@
+@import "~bootstrap/scss/bootstrap";
+.blur {
+    width: auto;
+    height: 100%;
+    animation: blur 1s ease 1;
+}
+@keyframes blur {
+    0%,
+    90% {
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -o-filter: blur(0px);
+        -ms-filter: blur(0px);
+    }
+    50% {
+        -webkit-filter: blur(50px);
+        -moz-filter: blur(50px);
+        -o-filter: blur(50px);
+        -ms-filter: blur(50px);
+    }
+}
+
+
+ body {
+
+    //    background: linear-gradient(-45deg, #044546, #e02171, #7b4397, #dc2430, rgb(8, 18, 80));
+    background: linear-gradient(45deg, #FC466B, #3F5EFB);
+    background-size: 400% 400%;
+    animation: gradient 3s ease infinite;
+}
+
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
