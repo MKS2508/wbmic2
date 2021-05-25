@@ -33,12 +33,12 @@ export class LoginServiceService {
       this.jwtToken ==  data.token;
 
        localStorage.setItem('JWT_token',  data.token);
-       localStorage.setItem('username',  JSON.parse(data.user.username));
+       localStorage.setItem('username',  data.user.username);
        localStorage.setItem('userRoles',  JSON.stringify(data.user.roles));
 
-       return (localStorage.getItem('JWT_token') !== null);
+       return data.token 
      });
-     console.log("TOKEN  "+this.jwtToken)
+     console.log("TOKEN2  "+this.jwtToken)
 
     }
 

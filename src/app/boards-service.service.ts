@@ -17,7 +17,7 @@ export class BoardsServiceService {
     return this.http.get<BoardProps[]>(this.url);
 }
 
-  getBoard(id: number){
+  getBoard(id: string){
     return this.http.get<BoardProps>(this.url+id);
 }
 
@@ -25,12 +25,12 @@ export class BoardsServiceService {
     return this.http.post<BoardProps>(this.url, newObject);
 }
 
-  putBoard(newObject: any, id:number){
+  putBoard(newObject: any, id:string){
     return this.http.put<BoardProps>(this.url+id, newObject);
 }
 //
-deleteBoards(idObject: number){
-    let httpParams = new HttpParams().set('id', idObject.toString());
+deleteBoards(idObject: string){
+    let httpParams = new HttpParams().set('productId', idObject.toString());
 
     const httpOptions = {
         

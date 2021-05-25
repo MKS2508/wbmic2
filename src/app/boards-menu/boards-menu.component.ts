@@ -35,6 +35,8 @@ export class BoardsMenuComponent implements OnInit {
     }
   }
 
+
+
   ngOnInit(): void {
     this.getBoards();
   }
@@ -55,6 +57,88 @@ export class BoardsMenuComponent implements OnInit {
     })
   }
 
+  board2: BoardProps= {
+      _id: '',
+      connected: false,
+      host: '',
+      port: 3030,
+      mode: [],
+      name: 'def',
+      pines: []
+    
+  }
+  
+  getBoard(id:string) {
+    this.boardService.getBoard(id).subscribe(data => {
+      this.board2 = data;
+      console.log(data)
+
+    })
+    console.log(this.board2)
+  }
+
+  putBoard(){
+    console.log(this.board2)
+    var modes: ModeProps[] = []
+    var modeProps1: ModeProps = {
+      name: "rgb",
+      pins: [15,16,14]
+    }
+    var modeProps2: ModeProps = {
+      name: "relay",
+      pins: [1,1,1]
+
+    }
+
+    var modeProps3: ModeProps = {
+      name: "sensor",
+      pins: [1,1,1]
+
+    }
+
+    var modeProps4: ModeProps = {
+      name: "piezo",
+      pins: [1,1,1]
+
+    }
+
+    for (var i = 0; i<= this.nRGB -1; i++){
+      modes.push(modeProps1)
+    }
+
+    for (var i = 0; i<= this.nReles-1; i++){
+      modes.push(modeProps2)
+    }    
+
+    for (var i = 0; i<= this.nSensores-1; i++){
+      modes.push(modeProps3)
+    }
+
+    for (var i = 0; i<= this.nPiezos -1; i++){
+      modes.push(modeProps4)
+    }
+
+    var pines: Number[] = []
+    var board: BoardProps = {
+      _id: this.board2._id,
+      connected: false,
+      host: this.host.value,
+      port: this.port.value,
+      mode: modes,
+      name: this.nombre.value,
+      pines: pines
+    }
+    console.log(board)
+    this.boardService.putBoard(board, this.board2._id).subscribe(data => {
+      console.log(data)
+
+    })
+    console.log(this.board2)
+    this.getBoards();
+    this.getBoards();
+
+  }
+
   flag = false;
   boards = ["a", "a"];
 
@@ -65,6 +149,7 @@ export class BoardsMenuComponent implements OnInit {
   port = new FormControl('');
   mode = new FormControl('');
 
+
   mode2 = new FormControl('');
   mode3 = new FormControl('');
   mode4 = new FormControl('');
@@ -73,39 +158,73 @@ export class BoardsMenuComponent implements OnInit {
   pines = new FormControl('');
 
 
+  nReles: number = 0;
+  nRGB: number = 0;
+  nSensores: number = 0;
+  nPiezos: number = 0;
+
+  increaseN(n: string){
+    if(n == 'rele'){
+      this.nReles ++
+    } else if(n == 'rgb'){
+      this.nRGB ++
+    } else if(n == 'sensor'){
+      this.nSensores ++
+    } else if(n == 'piezo'){
+      this.nPiezos ++
+    }
+  }
+
+  decreaseN(n: string){
+    if(n == 'rele'){
+      this.nReles --
+    } else if(n == 'rgb'){
+      this.nRGB --
+    } else if(n == 'sensor'){
+      this.nSensores --
+    } else if(n == 'piezo'){
+      this.nPiezos --
+    }  }
   insertNew() {
     console.log(this.host.value);
     var modes: ModeProps[] = []
     var modeProps1: ModeProps = {
       name: "rgb",
-      pin1: 16,
-      pin2: 15,
-      pin3: 14
+      pins: [15,16,14]
     }
     var modeProps2: ModeProps = {
       name: "relay",
-      pin1: 1,
-      pin2: 1,
-      pin3: 1
+      pins: [1,1,1]
+
     }
 
     var modeProps3: ModeProps = {
       name: "sensor",
-      pin1: 1,
-      pin2: 1,
-      pin3: 1
+      pins: [1,1,1]
+
     }
 
     var modeProps4: ModeProps = {
-      name: this.mode4.value,
-      pin1: 1,
-      pin2: 1,
-      pin3: 1
+      name: "piezo",
+      pins: [1,1,1]
+
     }
-    modes.push(modeProps1)
-    modes.push(modeProps2)
-    modes.push(modeProps3)
-    modes.push(modeProps4)
+
+    for (var i = 0; i<= this.nRGB -1; i++){
+      modes.push(modeProps1)
+    }
+
+    for (var i = 0; i<= this.nReles-1; i++){
+      modes.push(modeProps2)
+    }    
+
+    for (var i = 0; i<= this.nSensores-1; i++){
+      modes.push(modeProps3)
+    }
+
+    for (var i = 0; i<= this.nPiezos -1; i++){
+      modes.push(modeProps4)
+    }
 
     var pines: Number[] = []
     var board: BoardProps = {
@@ -120,11 +239,21 @@ export class BoardsMenuComponent implements OnInit {
     this.boardService.postBoard(board).subscribe(data => {
       console.log(data)
     })
+    this.nReles == 0;
+    this.nSensores == 0;
+    this.nRGB == 0;
 
     this.getBoards();
   }
 
-  delete() {
+  edit(id: string){
+    console.log("ID: "+id)
+    this.getBoard(id);
+  }
 
+  delete(id:string) {
+    this.boardService.deleteBoards(id).subscribe(data =>{
+      console.log(data)
+    })
   }
 }

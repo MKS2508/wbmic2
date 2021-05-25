@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BoardProps } from '../board-props';
 import { BoardsServiceService } from '../boards-service.service';
 import { DeviceProps } from '../device-props';
@@ -11,7 +13,12 @@ import { IotActionsService } from '../iot-actions.service';
 })
 export class IotMenuComponent implements OnInit {
 
-  constructor(private boardService:BoardsServiceService, private actionService: IotActionsService) { }
+
+  constructor(private boardService:BoardsServiceService, private actionService: IotActionsService, private modalService: NgbModal) { }
+
+
+ edit(){}
+  
 flag = false; 
 cambiarFlag(){
   this.flag = !this.flag;

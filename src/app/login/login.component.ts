@@ -28,12 +28,15 @@ export class LoginComponent implements OnInit {
       roles : []
     }
 
-
-    this.LoginService.login(usuario);
-
-    if(localStorage.getItem('JWT_Token') != ''){
+console.log(this.LoginService.login(usuario) )
+    if(this.LoginService.login(usuario) != null){
       this.cambiarPag("home")
     }
+
+    if(localStorage.getItem('JWT_Token') == null){
+      this.cambiarPag("home")
+    }
+
   }
 
   constructor(private LoginService: LoginServiceService) {

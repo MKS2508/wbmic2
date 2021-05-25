@@ -23,6 +23,7 @@ import { IotActionsService } from './iot-actions.service';
 import { HttpClient, HttpClientModule, HttpHandler } from  '@angular/common/http'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { LogServiceService } from './log-service.service';
 
 const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: env.mqtt.server,
@@ -58,7 +59,7 @@ const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   ],
 
   // tslint:disable-next-line:max-line-length
-  providers: [MQTTService,  BoardsServiceService, DevicesServiceService, RutinesServiceService, LoginServiceService, MQTTService, IotActionsService, HttpClient, HttpClientModule],
+  providers: [MQTTService,LogServiceService ,  BoardsServiceService, DevicesServiceService, RutinesServiceService, LoginServiceService, MQTTService, IotActionsService, HttpClient, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

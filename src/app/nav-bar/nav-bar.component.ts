@@ -9,6 +9,7 @@ import { MQTTService } from '../mqtt.service';
 import { IMqttMessage } from "ngx-mqtt";
 import { LoginServiceService } from '../login-service.service';
 import { UserProps } from '../user-props';
+import { LogServiceService } from '../log-service.service';
 
 interface Alert {
   type: string;
@@ -52,7 +53,7 @@ export class NavBarComponent implements OnInit {
   @Output() pagina = new EventEmitter<String>();
   alerts: Alert[] = [];
 
-  constructor(  private mqttService: MQTTService, private LoginService: LoginServiceService
+  constructor(  private mqttService: MQTTService, private LoginService: LoginServiceService, private LogService: LogServiceService
 ) {
 
   }
@@ -80,6 +81,7 @@ export class NavBarComponent implements OnInit {
   selfClosingAlert!: NgbAlert;
   tokenJWT:any = ''
   flag = true;
+  rolesArr: string[]= []
   user: any = {
 
   }
@@ -94,17 +96,31 @@ export class NavBarComponent implements OnInit {
 
 
   ngOnInit(): void {
+ 
+    this.tokenJWT = localStorage.getItem('JWT_Token');
+    this.user.username = localStorage.getItem('username');
+    this.user.roles = localStorage.getItem('userRoles');
+
+    var roles: any[] = []
+    roles = JSON.parse(this.user.roles)
+
+    roles.forEach(element => {
+      this.rolesArr.push(element.name)
+    });
+    this.user.roles = this.rolesArr
+    console.log("name: "+this.user)
+    //this.subscribeToTopic();
     this.mqttService.topic().subscribe(data => {
       this.message = data.payload.toString();
 
       console.log(this.message)
+      
       this.changeSuccessMessage(this.message)
-    })
-    this.tokenJWT = localStorage.getItem('JWT_Token');
-    this.user.username = localStorage.getItem('username');
-    console.log("name: "+this.user)
-    //this.subscribeToTopic();
+//insertar
+      this.LogService.addLog(this.user.username, this.message).subscribe(data => console.log(data))
+      this.cambiarPag( 'home') 
 
+    })
     this.reset()
     screenWidth = window.innerWidth;
     screenHeight = window.innerHeight;

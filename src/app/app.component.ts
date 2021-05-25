@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  pagina: String = 'home';
+  pagina: String = 'login';
   paginas: String[] = ['login', 'registro', 'boardsMenu', 'iotMenu','rutinas', 'home']
   title = 'wbmic';
   //recibir la pag de bav

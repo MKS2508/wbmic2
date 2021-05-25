@@ -10,13 +10,13 @@ export class DevicesServiceService {
 //solo estaran los conectados, si nos desconectamos, se borra los datos de la tabla
 constructor(private http: HttpClient) { }
 
-private url: string = "http://192.168.1.137:4000/api/iot/connected";
+private url: string = "http://192.168.1.137:4000/api/iot/connected/";
 
 getDevices(){
   return this.http.get<DeviceProps[]>(this.url);
 }
 
-getDevice(id: number){
+getDevice(id: string){
   return this.http.get<DeviceProps>(this.url+id);
 }
 

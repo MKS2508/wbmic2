@@ -42,9 +42,9 @@
 
                                     <div class="input-group">
 
-                                        <button class="btn btn-outline-primary">+</button>
-                                        <span style="margin-top:8px">   0   </span>
-                                        <button class="btn btn-outline-danger">-</button>
+                                        <button class="btn btn-outline-primary" (click)="increaseN('rele')">+</button>
+                                        <span style="margin-top:8px">   {{nReles}}   </span>
+                                        <button class="btn btn-outline-danger" (click)="decreaseN('rele')">-</button>
                                     </div>
                                 </li>
                                 <label>  RGB: </label >
@@ -52,9 +52,9 @@
                                 <li>
                                     <div class="input-group">
 
-                                        <button class="btn btn-outline-primary">+</button>
-                                        <span style="margin-top:8px">   0   </span>
-                                        <button class="btn btn-outline-danger">-</button>
+                                        <button class="btn btn-outline-primary" (click)="increaseN('rgb')">+</button>
+                                        <span style="margin-top:8px">   {{nRGB}}   </span>
+                                        <button class="btn btn-outline-danger" (click)="decreaseN('rgb')">-</button>
                                     </div>
                                 </li>
                                 <label>  Sensor de temperatura: </label >
@@ -62,9 +62,9 @@
                                 <li>
                                     <div class="input-group">
 
-                                        <button class="btn btn-outline-primary">+</button>
-                                        <span style="margin-top:8px">   0   </span>
-                                        <button class="btn btn-outline-danger">-</button>
+                                        <button class="btn btn-outline-primary" (click)="increaseN('sensor')">+</button>
+                                        <span style="margin-top:8px">   {{nSensores}}   </span>
+                                        <button class="btn btn-outline-danger" (click)="decreaseN('sensor')">-</button>
                                     </div>
                                 </li>
                             </ul>
@@ -79,7 +79,70 @@
 
 
             </ng-template>
+            <ng-template #content2 let-modal>
 
+
+                <div class="card2">
+                    <form>
+                        <div class="form-group" style="text-align:center;">
+
+                            
+                            <label>Nombres</label>
+                            <div class="input-group">
+                                <input class="form-control"  [(ngModel)]="board2.name"  placeholder="Arduino Salón" type="text" [formControl]="nombre"  [value]=board2.name>
+                            </div>
+                            <label>Dirección IP</label>
+                            <div class="input-group">
+                                <input class="form-control" [(ngModel)]="board2.host" placeholder="192.168.1.1" type="text" [formControl]="host">
+                            </div>
+                            <label>Puerto</label>
+                            <div class="input-group">
+                                <input class="form-control" [(ngModel)]="board2.port" placeholder="3030" type="text" [formControl]="port">
+                            </div>
+                            <ul>
+                                <label>  Relé: </label >
+
+                                <li>
+
+                                    <div class="input-group">
+
+                                        <button class="btn btn-outline-primary" (click)="increaseN('rele')">+</button>
+                                        <span style="margin-top:8px">   {{nReles}}   </span>
+                                        <button class="btn btn-outline-danger" (click)="decreaseN('rele')">-</button>
+                                    </div>
+                                </li>
+                                <label>  RGB: </label >
+
+                                <li>
+                                    <div class="input-group">
+
+                                        <button class="btn btn-outline-primary" (click)="increaseN('rgb')">+</button>
+                                        <span style="margin-top:8px">   {{nRGB}}   </span>
+                                        <button class="btn btn-outline-danger" (click)="decreaseN('rgb')">-</button>
+                                    </div>
+                                </li>
+                                <label>  Sensor de temperatura: </label >
+
+                                <li>
+                                    <div class="input-group">
+
+                                        <button class="btn btn-outline-primary" (click)="increaseN('sensor')">+</button>
+                                        <span style="margin-top:8px">   {{nSensores}}   </span>
+                                        <button class="btn btn-outline-danger" (click)="decreaseN('sensor')">-</button>
+                                    </div>
+                                </li>
+                            </ul>
+                           
+
+                        </div>
+                        <button style="margin-left: 35%;" type="button" class="btn btn-outline-primary" (click)=" putBoard() " (click)="modal.close( 'Save click') ">Guardar</button>
+
+                    </form>
+                </div>
+
+
+
+            </ng-template>
 
 
             <div class="bigCard " style="margin-top: 0; ">
@@ -133,8 +196,8 @@
                                             <p> Modos asociados:  [{{board.mode}}]</p>
 
                                             <div class="button-group " style="margin: 5% ">
-                                                <button type="button " style="margin-right: 5% " class="btn btn-outline-primary " (click)=delete();>Editar</button>
-                                                <button type="button " style="margin-left: 5% " class="btn btn-outline-danger " (click)=delete();>Eliminar</button>
+                                                <button type="button " style="margin-right: 5% " class="btn btn-outline-primary " (click)=edit(board._id); (click)=open(content2)>Editar</button>
+                                                <button type="button " style="margin-left: 5% " class="btn btn-outline-danger " (click)=delete(board._id);>Eliminar</button>
                                             </div>
 
                                         </div>

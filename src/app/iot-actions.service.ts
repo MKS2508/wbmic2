@@ -17,11 +17,16 @@ export class IotActionsService {
   private url2: string = "http://192.168.1.137:4000/api/iot/setModes";
   private url3: string = "http://192.168.1.137:4000/api/iot/resetModes";
   private url4: string = "http://192.168.1.137:4000/api/iot/";
+  token:any = ''
 
-  
-  sendAction( productId: String, deviceId: String, action: String, data: String ){
+  sendAction( productId: String, deviceId: String, action: String, data: String, pines: any[] ){
+    this.token= localStorage.getItem('JWT_token')
+    const httpOptions = {
 
-    return this.http.post<any>(this.url4 + productId + "/" +  deviceId + "/action/" +action,{data:data}); //TODO: REVISAR!
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' , 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'X-Requested-With,content-type', 'x-access-token':this.token })
+    };
+    return this.http.post<any>(this.url4 + productId + "/" +  deviceId + "/action/" +action,{data:data, pines: pines}, httpOptions); //TODO: REVISAR!
+    
   }
   
   connect(productsId: String[]){

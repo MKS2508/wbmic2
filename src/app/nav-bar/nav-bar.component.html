@@ -77,7 +77,7 @@
                         </li>
                         <li>
                             <a class="nav-link text-white " (click)="cambiarPag( 'iotMenu') ">
-                                <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#speedometer2 "/></svg> Conectar IoT
+                                <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#speedometer2 "/></svg> Conectar
                             </a>
                         </li>
                         <li>
@@ -85,9 +85,9 @@
                                 <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#table "/></svg> Rutinas
                             </a>
                         </li>
-                        <li>
+                        <li *ngIf="user.roles.includes('moderator')">
                             <a class="nav-link text-white " (click)="cambiarPag( 'boardsMenu') ">
-                                <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#grid "/></svg> Placas / Dispositivos IoT
+                                <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#grid "/></svg> Panel de control
                             </a>
                         </li>
                         <li>
@@ -100,9 +100,10 @@
                                     <div class="px-3 py-2 border-bottom mb-3 ">
                                         <div class="container d-flex flex-wrap justify-content-center ">
                                             <p>Bienvenido, {{user.username}}</p>
+                                            <p>Roles activos: [{{user.roles}}]</p>
+
                                             <div class="dropdown text-end ">
                                                 <button *ngIf="tokenJWT !='' " style="margin:20px " type="button " class="btn btn-danger text-dark me-2 " (click)="logout() ">Cerrar sesión</button>
-                                                <button style="margin:20px " type="button " class="btn btn-primary " (click)="cambiarPag( 'registro') ">Registro</button>
                                             </div>
                                         </div>
 
@@ -117,9 +118,7 @@
 
                 <ngb-alert #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage = ''">{{ successMessage }}
                 </ngb-alert>
-                <p>
-                    <button class="btn btn-primary" (click)="changeSuccessMessage('')">Change message</button>
-                </p>
+               
             </div>
 
         </header>

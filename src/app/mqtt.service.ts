@@ -21,7 +21,7 @@ export class MQTTService {
     let topicName = this.endpoint;
 
     console.log(this._mqttService.observe(topicName));
-    this._mqttService.unsafePublish(topicName, "message", {qos: 1, retain: true});
+    this._mqttService.unsafePublish(topicName, "MQTT Conectado!", {qos: 1, retain: true});
     return this._mqttService.observe(topicName);
 
   }
