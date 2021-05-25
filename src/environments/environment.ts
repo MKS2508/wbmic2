@@ -8,7 +8,7 @@ export const environment = {
   mqtt: {
     server: 'localhost',
     protocol: 'wss',
-    port: 1883
+    port: 9001
   }
 };
 /*

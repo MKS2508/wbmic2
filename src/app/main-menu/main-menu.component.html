@@ -145,12 +145,14 @@
                                             <h2> Dispositivo RGB <img
                                                     src="https://img.icons8.com/fluent/48/000000/color-mode.png " />
                                                 conectado a dispositivo con ID: {{device.boardID}}</h2>
-                                            <p>Usando los pines: [{{device.pines}}]</p>
+                                            <p>Usando los pines: [{{device.pines}}] {{device.address}}</p>
                                             <br>
+                                            
                                             <input readonly *ngIf="mostrarColor == true" type="text" class="form-control" [cpPosition]="'bottom'"
                                                 [(colorPicker)]="color"  (colorPickerChange)="sendAction(device.boardID, device.address, 'color', color)"[style.background]="color"
                                                 [value]="color">
-                                            <a href=" ">Cambiar configuración del dispositivo</a>
+                                            <a href=" ">Cambiar configuración del dispositivo   <img src="/assets/pencil.svg">
+                                            </a>
                                             <hr>
 
 

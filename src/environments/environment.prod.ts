@@ -3,7 +3,7 @@ export const environment = {
   hmr: false,
   mqtt: {
     server: 'localhost',
-    protocol: 'mqtt',
-    port: 1883
+    protocol: 'wss',
+    port: 9001
   }
 };

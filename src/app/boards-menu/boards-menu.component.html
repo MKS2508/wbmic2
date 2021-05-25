@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +21,8 @@
                 <div class="card2">
                     <form>
                         <div class="form-group" style="text-align:center;">
+
+                            
                             <label>Nombres</label>
                             <div class="input-group">
                                 <input class="form-control" placeholder="Arduino Salón" type="text" [formControl]="nombre">
@@ -32,15 +35,40 @@
                             <div class="input-group">
                                 <input class="form-control" placeholder="3030" type="text" [formControl]="port">
                             </div>
+                            <ul>
+                                <label>  Relé: </label >
 
-                            <label>Modos</label>
-                            <div class="input-group">
-                                <input class="form-control" placeholder="3030" type="text" [formControl]="mode">
-                            </div>
-                            <label>Pines</label>
-                            <div class="input-group">
-                                <input class="form-control" placeholder="3030" type="text" [formControl]="pines">
-                            </div>
+                                <li>
+
+                                    <div class="input-group">
+
+                                        <button class="btn btn-outline-primary">+</button>
+                                        <span style="margin-top:8px">   0   </span>
+                                        <button class="btn btn-outline-danger">-</button>
+                                    </div>
+                                </li>
+                                <label>  RGB: </label >
+
+                                <li>
+                                    <div class="input-group">
+
+                                        <button class="btn btn-outline-primary">+</button>
+                                        <span style="margin-top:8px">   0   </span>
+                                        <button class="btn btn-outline-danger">-</button>
+                                    </div>
+                                </li>
+                                <label>  Sensor de temperatura: </label >
+
+                                <li>
+                                    <div class="input-group">
+
+                                        <button class="btn btn-outline-primary">+</button>
+                                        <span style="margin-top:8px">   0   </span>
+                                        <button class="btn btn-outline-danger">-</button>
+                                    </div>
+                                </li>
+                            </ul>
+                           
 
                         </div>
                         <button style="margin-left: 35%;" type="button" class="btn btn-outline-primary" (click)=" insertNew() " (click)="modal.close( 'Save click') ">Guardar</button>

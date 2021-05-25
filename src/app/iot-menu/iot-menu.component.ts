@@ -45,7 +45,7 @@ getBoards(){
     this.boards.forEach(element => {
       console.log(element.mode)
     for(var i = 0; i < element.mode.length; i++){
-      element.mode[i] = element.mode[i].name
+      element.mode[i].name = element.mode[i].name
       element.connected = false;
     }
     });
@@ -53,16 +53,8 @@ getBoards(){
   })
 }
 
-   board: BoardProps = {
-    _id: '',
-    connected: false,
-    host: 'this.host.value',
-    port:3030,
-    mode: ['this.mode.value'],
-    name: 'this.nombre.value',
-    pines: [1,2],
-  }
-  boards: BoardProps[] = [this.board, this.board];
+
+  boards: BoardProps[] = [];
 
 
 }

@@ -26,8 +26,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 
 const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: env.mqtt.server,
-  port: env.mqtt.port,
-  protocol: (env.mqtt.protocol === 'wss') ? 'wss' : 'ws',
+  port: 9001,
   path: '',
 };
 
