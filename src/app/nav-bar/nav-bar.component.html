@@ -116,9 +116,13 @@
                     </ul>
                 </div>
 
+                <ngb-alert  *ngIf="errorMessage" type="danger" (closed)="errorMessage = ''">{{ errorMessage }} 
+                    <button (click)="disconnect()" class="btn btn-outline-danger">
+                        REINICIAR CONEXIÓN
+                    </button>
+                </ngb-alert>
                 <ngb-alert #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage = ''">{{ successMessage }}
                 </ngb-alert>
-               
             </div>
 
         </header>

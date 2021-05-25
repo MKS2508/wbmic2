@@ -10,6 +10,7 @@ import { IMqttMessage } from "ngx-mqtt";
 import { LoginServiceService } from '../login-service.service';
 import { UserProps } from '../user-props';
 import { LogServiceService } from '../log-service.service';
+import { IotActionsService } from '../iot-actions.service';
 
 interface Alert {
   type: string;
@@ -53,7 +54,7 @@ export class NavBarComponent implements OnInit {
   @Output() pagina = new EventEmitter<String>();
   alerts: Alert[] = [];
 
-  constructor(  private mqttService: MQTTService, private LoginService: LoginServiceService, private LogService: LogServiceService
+  constructor(  private iotActionsService: IotActionsService,private mqttService: MQTTService, private LoginService: LoginServiceService, private LogService: LogServiceService
 ) {
 
   }
@@ -71,9 +72,11 @@ export class NavBarComponent implements OnInit {
   }
 
  private _success = new Subject<string>();
+ private _error = new Subject<string>();
 
   staticAlertClosed = false;
   successMessage = '';
+  errorMessage = '';
 
   @ViewChild('staticAlert', { static: false })
   staticAlert!: NgbAlert;
@@ -114,8 +117,12 @@ export class NavBarComponent implements OnInit {
       this.message = data.payload.toString();
 
       console.log(this.message)
-      
-      this.changeSuccessMessage(this.message)
+      if(this.message.split('_')[0] === 'error'){
+        this.changeErrorMessage(this.message)
+      } else {
+        this.changeSuccessMessage(this.message)
+
+      }
 //insertar
       this.LogService.addLog(this.user.username, this.message).subscribe(data => console.log(data))
       this.cambiarPag( 'home') 
@@ -129,7 +136,21 @@ export class NavBarComponent implements OnInit {
       this.flag=false;
     }
 this.makeSuccesMessage()
+this.makeErrorMessage()
+
   }
+
+  public disconnect(){
+    this.iotActionsService.disconnect([]).subscribe(data => console.log(data))
+  }
+  public makeErrorMessage(){
+
+    this._error.subscribe(message => this.errorMessage = message.split('_')[1]);
+    
+   
+
+  }
+
   public makeSuccesMessage(){
     setTimeout(() => this.staticAlert.close(), 20000);
 
@@ -147,6 +168,7 @@ this.makeSuccesMessage()
   };
 
   public changeSuccessMessage(message: String) { this._success.next(`${new Date()} - `+message); }
+  public changeErrorMessage(message: String) { this._error.next(`${new Date()} - `+message); }
 
 
   

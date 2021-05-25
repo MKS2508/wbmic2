@@ -200,7 +200,7 @@ export class BoardsMenuComponent implements OnInit {
 
     var modeProps3: ModeProps = {
       name: "sensor",
-      pins: [1,1,1]
+      pins: [2,1,1]
 
     }
 

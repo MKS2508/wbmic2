@@ -9,23 +9,43 @@ import { DeviceProps } from "src/app/device-props";
 export class DevicesServiceService {
 //solo estaran los conectados, si nos desconectamos, se borra los datos de la tabla
 constructor(private http: HttpClient) { }
-
+token:any = '';
 private url: string = "http://192.168.1.137:4000/api/iot/connected/";
 
 getDevices(){
-  return this.http.get<DeviceProps[]>(this.url);
+  this.token= localStorage.getItem('JWT_token')
+  const httpOptions = {
+
+    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' , 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'X-Requested-With,content-type', 'x-access-token':this.token })
+  };
+  return this.http.get<DeviceProps[]>(this.url, httpOptions);
 }
 
 getDevice(id: string){
+  this.token= localStorage.getItem('JWT_token')
+  const httpOptions = {
+
+    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' , 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'X-Requested-With,content-type', 'x-access-token':this.token })
+  };
   return this.http.get<DeviceProps>(this.url+id);
 }
 
 postDevice(newObject: any){
-  return this.http.post<DeviceProps>(this.url, newObject);
+  this.token= localStorage.getItem('JWT_token')
+  const httpOptions = {
+
+    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' , 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'X-Requested-With,content-type', 'x-access-token':this.token })
+  };
+  return this.http.post<DeviceProps>(this.url, newObject, httpOptions);
 }
 
 putDevice(newObject: any, id:number){
-  return this.http.put<DeviceProps>(this.url+id, newObject);
+  this.token= localStorage.getItem('JWT_token')
+  const httpOptions = {
+
+    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' , 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'X-Requested-With,content-type', 'x-access-token':this.token })
+  };
+  return this.http.put<DeviceProps>(this.url+id, newObject, httpOptions);
 }
 //
 deleteDevices(idObject: number){
