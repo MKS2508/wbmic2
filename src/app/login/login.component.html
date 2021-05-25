@@ -29,12 +29,15 @@
                     <form>
                         <div class="form-group" style="text-align:center;">
                             <div class="input-group">
-                                <input class="form-control" placeholder="Username" type="text">
+                                <input class="form-control" placeholder="Username" type="text" [formControl]="user">
                             </div>
                             <div class="input-group">
-                                <input class="form-control" placeholder="Password" type="password">
+                                <input class="form-control" placeholder="Password" type="password" [formControl]="pwd">
                             </div>
 
+                            <button class="btn btn-outline-primary" (click)=login()>
+                                Iniciar sesión
+                            </button>
 
 
                         </div>

@@ -29,9 +29,10 @@
     <app-registro></app-registro>
 </div>
 <div *ngIf="pagina=='login'">
-    <app-login></app-login>
+    <app-login (pagina)="cambiarPag($event)"></app-login>
 </div>
 <div *ngIf="pagina!='login'">
+    <app-footer></app-footer>
 
 </div>
 

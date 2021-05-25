@@ -7,6 +7,8 @@ import {NgbAlert} from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { MQTTService } from '../mqtt.service';
 import { IMqttMessage } from "ngx-mqtt";
+import { LoginServiceService } from '../login-service.service';
+import { UserProps } from '../user-props';
 
 interface Alert {
   type: string;
@@ -46,11 +48,11 @@ export class NavBarComponent implements OnInit {
   events: any[] = [];
   private deviceId: string = '';
   subscription: Subscription = new Subscription;
-
+  public message: string = '';
   @Output() pagina = new EventEmitter<String>();
   alerts: Alert[] = [];
 
-  constructor(  private mqttService: MQTTService,
+  constructor(  private mqttService: MQTTService, private LoginService: LoginServiceService
 ) {
 
   }
@@ -76,17 +78,32 @@ export class NavBarComponent implements OnInit {
   staticAlert!: NgbAlert;
   @ViewChild('selfClosingAlert', { static: false })
   selfClosingAlert!: NgbAlert;
-
+  tokenJWT:any = ''
   flag = true;
+  user: any = {
 
+  }
   cambiarFlag(){
     this.flag = !this.flag;
   }
 
+  logout(){
+    this.LoginService.logout()
+    this.cambiarPag( 'login') 
+  }
 
 
   ngOnInit(): void {
-    this.subscribeToTopic();
+    this.mqttService.topic().subscribe(data => {
+      this.message = data.payload.toString();
+
+      console.log(this.message)
+      this.changeSuccessMessage(this.message)
+    })
+    this.tokenJWT = localStorage.getItem('JWT_Token');
+    this.user.username = localStorage.getItem('username');
+    console.log("name: "+this.user)
+    //this.subscribeToTopic();
 
     this.reset()
     screenWidth = window.innerWidth;
@@ -108,15 +125,14 @@ this.makeSuccesMessage()
     });
 
   }
-  public changeSuccessMessage() { this._success.next(`${new Date()} - Conectado!`); }
+
+  public mostrarAlerta(){
+  
+  };
+
+  public changeSuccessMessage(message: String) { this._success.next(`${new Date()} - `+message); }
 
 
-  private subscribeToTopic() {
-    this.subscription = this.mqttService.topic()
-      .subscribe((data: IMqttMessage) => {
-        let item = JSON.parse(data.payload.toString());
-        this.events.push(item);
-      });
-  }
+  
 
 }

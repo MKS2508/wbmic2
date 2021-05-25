@@ -94,14 +94,14 @@
                             <div ngbDropdown class="d-inline-block ">
                                 <a href="# " class="nav-link text-white " ngbDropdownToggle>
 
-                                    <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#people-circle "/></svg> Usuarios
+                                    <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#people-circle "/></svg> Usuario
                                 </a>
                                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1 ">
                                     <div class="px-3 py-2 border-bottom mb-3 ">
                                         <div class="container d-flex flex-wrap justify-content-center ">
-
+                                            <p>Bienvenido, {{user.username}}</p>
                                             <div class="dropdown text-end ">
-                                                <button style="margin:20px " type="button " class="btn btn-light text-dark me-2 " (click)="cambiarPag( 'login') ">Login</button>
+                                                <button *ngIf="tokenJWT !='' " style="margin:20px " type="button " class="btn btn-danger text-dark me-2 " (click)="logout() ">Cerrar sesión</button>
                                                 <button style="margin:20px " type="button " class="btn btn-primary " (click)="cambiarPag( 'registro') ">Registro</button>
                                             </div>
                                         </div>
@@ -114,6 +114,12 @@
                         </li>
                     </ul>
                 </div>
+
+                <ngb-alert #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage = ''">{{ successMessage }}
+                </ngb-alert>
+                <p>
+                    <button class="btn btn-primary" (click)="changeSuccessMessage('')">Change message</button>
+                </p>
             </div>
 
         </header>
