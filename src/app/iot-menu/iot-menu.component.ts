@@ -27,6 +27,9 @@ cambiarFlag(){
 reset(){
 
 }
+public disconnect(){
+  this.actionService.disconnect([]).subscribe(data => console.log(data))
+}
 successMessage: any
 ngOnInit(): void {
   this.actionService.isConnected().subscribe(data => {

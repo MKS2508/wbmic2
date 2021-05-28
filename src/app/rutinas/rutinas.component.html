@@ -29,8 +29,8 @@
                             <label>Dirección del dispositivo: </label>
                             <p>La dirección de los dispositivo se encuentra en la pastaña principal.</p>
                             <div class="input-group">
-                                <input [formControl]="repeticion" class="form-control"  [formControl]="deviceID" list="browsers" name="browser" id="browser">
-                                <datalist id="browsers">
+                                <input [formControl]="repeticion" class="form-control"  [formControl]="deviceID" list="devis" name="browser" id="browser">
+                                <datalist id="devis">
                                   <option *ngFor=" let device of devices" value="device.address">
                                 </datalist>
                             </div>

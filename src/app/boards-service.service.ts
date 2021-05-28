@@ -33,15 +33,19 @@ export class BoardsServiceService {
 }
 
   postBoard(newObject: any){
+    console.error(newObject)
+
     this.token= localStorage.getItem('JWT_token')
+    
     const httpOptions = {
 
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' , 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'X-Requested-With,content-type', 'x-access-token':this.token })
     };
-    return this.http.post<BoardProps>(this.url, newObject);
+    return this.http.post<BoardProps>(this.url, newObject, httpOptions);
 }
 
   putBoard(newObject: any, id:string){
+    console.warn(newObject)
     this.token= localStorage.getItem('JWT_token')
     const httpOptions = {
 

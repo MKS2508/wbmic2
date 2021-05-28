@@ -161,6 +161,12 @@ export class BoardsMenuComponent implements OnInit {
 
     }
 
+    var modeProps5: ModeProps = {
+      name: "lamp",
+      pins: [1,1,1]
+
+    }
+
     for (var i = 0; i<= this.nRGB -1; i++){
       modes.push(modeProps1)
     }
@@ -176,6 +182,9 @@ export class BoardsMenuComponent implements OnInit {
     for (var i = 0; i<= this.nPiezos -1; i++){
       modes.push(modeProps4)
     }
+    for (var i = 0; i<= this.nLamps -1; i++){
+      modes.push(modeProps5)
+    }
 
     var pines: Number[] = []
     var board: BoardProps = {
@@ -189,6 +198,7 @@ export class BoardsMenuComponent implements OnInit {
     }
     console.log(board)
     this.boardService.putBoard(board, this.board2._id).subscribe(data => {
+      console.log('edited')
       console.log(data)
 
     })

@@ -53,7 +53,7 @@
                             Ya has iniciado una conexión, para realizar una nueva conexión, por favor, pulsa reiniciar.
                         </p>
                         <hr>
-                        <button class="btn btn-outline-danger" (click)="conectar()">
+                        <button class="btn btn-outline-danger" (click)="disconnect()">
                             REINICIAR CONEXIÓN
                         </button>
 
@@ -98,7 +98,7 @@
                                             <img src="../../assets/mcu2.png" alt="groot-img">
                                         </div>
                                         <div class="text-container ">
-                                            <h2>Dispositivo ESP8266 <span
+                                            <h2>Dispositivo ESP8266 - {{board.name}} <span
                                                     *ngIf="board.connected == false">🔴</span><span
                                                     *ngIf="board.connected == true">🟢</span>
                                             </h2>
