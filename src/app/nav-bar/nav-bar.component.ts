@@ -101,11 +101,12 @@ export class NavBarComponent implements OnInit {
     this.cambiarPag( 'login') 
   }
 
-
+username: string | null = ''
   ngOnInit(): void {
- 
+    this.user = localStorage.getItem('user')
+    this.user = JSON.parse(this.user)
     this.tokenJWT = localStorage.getItem('JWT_Token');
-    this.user.username = localStorage.getItem('username');
+    this.username = localStorage.getItem('username');
     this.user.roles = localStorage.getItem('userRoles');
 
     var roles: any[] = []

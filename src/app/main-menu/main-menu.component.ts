@@ -9,6 +9,8 @@ import { DevicesServiceService } from '../devices-service.service';
 import { IotActionsService } from '../iot-actions.service';
 import { FormControl } from '@angular/forms';
 
+
+
 interface Alert {
   type: string;
   message: string;
@@ -49,7 +51,7 @@ export class MainMenuComponent implements OnInit {
 
   connectedDevices: DeviceProps[] = []
 
-  
+  hasNext: boolean = false;
   alerts: Alert[] = [];
   closeResult = '';
   pagina: any = 1;
@@ -142,7 +144,7 @@ export class MainMenuComponent implements OnInit {
     this.deviceService.getDevices(pag).subscribe(data => {
       console.log("BOARDS:")
       console.log(data);
-
+      this.hasNext = data.has_more;
       this.connectedDevices = data.data;
 
 

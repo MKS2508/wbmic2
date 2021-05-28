@@ -20,11 +20,11 @@ token:any = ''
 
 
   register(newObject: any){
-    this.http.post<UserProps>(this.url, newObject).subscribe((data: any) => {
-      localStorage.setItem('JWT_token', data.token);
-      return (localStorage.getItem('JWT_token') !== null);
-    });
- }
+  
+
+    return this.http.post<any>(this.url, newObject)
+  
+    }
  getUsers() {
   const httpOptions = {
 

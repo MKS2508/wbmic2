@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { RutinesServiceService } from '../rutines-service.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { RutinesProps } from '../rutines-props';
+import { DevicesServiceService } from '../devices-service.service';
+import { DeviceProps } from '../device-props';
 
 
 @Component({
@@ -15,6 +17,7 @@ import { RutinesProps } from '../rutines-props';
 export class RutinasComponent implements OnInit {
   countries: any = [];
  
+  devices: DeviceProps[] = []
   flag= false;
   nombre = new FormControl('');
   accion = new FormControl('');
@@ -25,7 +28,7 @@ export class RutinasComponent implements OnInit {
   repeticion = new FormControl('');
 
 
-  constructor(private rutinesService: RutinesServiceService, private modalService: NgbModal) { 
+  constructor(private rutinesService: RutinesServiceService, private devicesService: DevicesServiceService, private modalService: NgbModal) { 
 
   }
 
@@ -36,8 +39,15 @@ export class RutinasComponent implements OnInit {
     })
   }
 
+  getDevices(){
+    this.devicesService.getDevices2().subscribe(data => {
+      console.log(data);
+      this.countries = data;
+    })
+  }
   ngOnInit(): void {
     this.getRutines()
+    this.getDevices();
   }
 
   closeResult = '';

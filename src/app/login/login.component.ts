@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
       localStorage.removeItem('admin')
       localStorage.removeItem('username')
       localStorage.setItem('JWT_token', data.token)
+      localStorage.setItem('user', JSON.stringify(data.user))
       localStorage.setItem('userRoles', JSON.stringify(data.user.roles))
       localStorage.setItem('username', data.username)
       if(data.user.roles.includes('admin')){

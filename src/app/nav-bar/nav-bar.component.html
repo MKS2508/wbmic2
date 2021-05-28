@@ -104,10 +104,16 @@
                             <a class="nav-link text-primary " (click)="cambiarPag( 'boardsMenu') " *ngIf="user.roles.includes('moderator')">
                                 <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#grid "/></svg> Panel de control
                             </a>
+                            <a class="nav-link text-secondary "   *ngIf="user.roles.includes('moderator') != true">
+                                <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#grid "/></svg> Panel de control
+                            </a>
                             
                         </li>
                         <li *ngIf="pag != 'boardsMenu'" >
-                            <a class="nav-link text-secondary " (click)="cambiarPag( 'boardsMenu') " >
+                            <a class="nav-link text-secondary " (click)="cambiarPag( 'boardsMenu') " *ngIf="user.roles.includes('moderator')">
+                                <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#grid "/></svg> Panel de control
+                            </a>
+                            <a class="nav-link text-secondary "   *ngIf="user.roles.includes('moderator') != true">
                                 <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#grid "/></svg> Panel de control
                             </a>
                         </li>

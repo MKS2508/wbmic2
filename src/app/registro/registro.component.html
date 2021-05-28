@@ -22,22 +22,30 @@
 
 
                 <div class="card2">
-                    <h2>Registro</h2>
+                    <h2>Registro 🧑‍🦰</h2>
                     <hr>
                     <br>
 
                     <form>
                         <div class="form-group" style="text-align:center;">
                             <div class="input-group">
-                                <input class="form-control" placeholder="Email" type="text">
+                                <input class="form-control" placeholder="Nombre de usuario" type="text" [formControl]="user">
                             </div>
                             <div class="input-group">
-                                <input class="form-control" placeholder="Username" type="text">
+                                <input class="form-control" placeholder="Correo electrónico" type="email" [formControl]="email">
                             </div>
                             <div class="input-group">
-                                <input class="form-control" placeholder="Password" type="password">
+                                <input class="form-control" placeholder="Contraseña" type="password" [formControl]="pwd">
                             </div>
-
+<hr>
+                            <button class="btn btn-outline-light" (click)=registro()>
+                                Registrarse
+                            </button>
+                            <hr>
+                            <p>¿Ya tienes una cuenta?</p>
+                            <button class="btn btn-outline-light" (click)="cambiarPag('login')" >
+                                Inicia sesión
+                            </button>
 
 
                         </div>

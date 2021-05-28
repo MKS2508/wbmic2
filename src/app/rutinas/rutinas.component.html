@@ -21,7 +21,6 @@
 
                 <div class="card2">
                     <form>
-                        <p>El formato de fecha debe ser: YYYY/MM/DD HH:mm:ss</p>
                         <div class="form-group" style="text-align:center;">
                             <label>Nombre de la accion: </label>
                             <div class="input-group">
@@ -30,9 +29,13 @@
                             <label>Dirección del dispositivo: </label>
                             <p>La dirección de los dispositivo se encuentra en la pastaña principal.</p>
                             <div class="input-group">
-                                <input class="form-control" placeholder="3030" type="text" [formControl]="deviceID">
+                                <input [formControl]="repeticion" class="form-control"  [formControl]="deviceID" list="browsers" name="browser" id="browser">
+                                <datalist id="browsers">
+                                  <option *ngFor=" let device of devices" value="device.address">
+                                </datalist>
                             </div>
                             <label>Acción</label>
+                            <p>rgb/on - relay/toggle</p>
                             <div class="input-group">
                                 <input class="form-control" placeholder="3030" type="text" [formControl]="accion">
                             </div>

@@ -30,6 +30,7 @@ export class BoardsMenuComponent implements OnInit {
 
   }
   roles: any  | string  = '';
+  user: any;
   constructor(private modalService: NgbModal, private boardService: BoardsServiceService, private logService:LogServiceService, private loginService: LoginServiceService) { }
 
   open(content: any) {
@@ -62,6 +63,7 @@ export class BoardsMenuComponent implements OnInit {
     this.loginService.getUsers().subscribe(data => {
       console.log(data)
       this.users = data;
+     
     })
   }
 
@@ -77,7 +79,14 @@ export class BoardsMenuComponent implements OnInit {
     this.getBoards();
     this.getLogs(this.pagina);
     this.getUsers()
-    this.roles = localStorage.getItem('admin')
+    this.user = localStorage.getItem('user')
+    this.user = JSON.parse(this.user)
+    var rolesArr: string[] = []
+    this.user.roles.forEach((element: { name: string; }) => {
+      rolesArr.push(element.name)
+    });
+    this.user.roles = rolesArr
+    console.log(this.user.roles)
   }
 
   changePage(pag:number){
