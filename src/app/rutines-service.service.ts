@@ -12,7 +12,7 @@ export class RutinesServiceService {
 
   constructor(private http: HttpClient) { }
 
-  private url: string = "http://192.168.1.137:4000/api/rutines/";
+  private url: string = "http://localhost:4000/api/rutines/";
 
   getRutines(){
     return this.http.get<RutinesProps[]>(this.url);

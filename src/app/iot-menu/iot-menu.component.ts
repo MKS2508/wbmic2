@@ -12,6 +12,7 @@ import { IotActionsService } from '../iot-actions.service';
   styleUrls: ['./iot-menu.component.scss']
 })
 export class IotMenuComponent implements OnInit {
+  isConnected: string | null = 'false';
 
 
   constructor(private boardService:BoardsServiceService, private actionService: IotActionsService, private modalService: NgbModal) { }
@@ -28,8 +29,17 @@ reset(){
 }
 successMessage: any
 ngOnInit(): void {
+  this.actionService.isConnected().subscribe(data => {
+    if(data.isConnected == true){
+      localStorage.setItem('isConnected', 'true')
+    } else {
+      localStorage.setItem('isConnected', 'false')
+
+    }
+  })
+  this.isConnected = localStorage.getItem('isConnected')
   this.getBoards();
-  
+
 }
 conectar(){
   var selected: String[] = [];
@@ -39,9 +49,12 @@ conectar(){
       selected.push(element._id);
     }
   });
-  this.actionService.connect(selected).subscribe(data => {
-    console.log(data)
-})
+  if(this.isConnected == 'false'){
+    this.actionService.connect(selected).subscribe(data => {
+      console.log(data)
+  })
+  }
+
 }
 getBoards(){
   this.boardService.getBoards().subscribe(data => {

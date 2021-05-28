@@ -15,30 +15,55 @@
     <main>
         <div class="bigWrapper">
             <div class="bigCard" style="margin-top: 0;">
-                <div class="title">
+                <div class="title text-white " *ngIf="isConnected == 'false'">
                     <div class="col-md-5 p-lg-5 mx-auto my-2">
 
 
-                        <h1 class="display-4 font-weight-normal">Iniciar conexión con dispositivo 📡</h1>
+                        <h1 class="display-4 font-weight-normal text-white">Iniciar una nueva conexión con un
+                            dispositivo 📡</h1>
                         <hr>
                         <button class="btn btn-outline-light" (click)="conectar()">
                             CONECTAR
                         </button>
                         <p>
-                            <img src="https://img.icons8.com/ios-filled/50/000000/integrated-circuit.png" /> Un dispositivo puede contener múltiples configuraciones.
+                            <img src="https://img.icons8.com/ios-filled/50/000000/integrated-circuit.png" /> Un
+                            dispositivo puede contener múltiples configuraciones.
                         </p>
-                        
-                        <ngb-alert #selfClosingAlert *ngIf="successMessage" type="error" (closed)="successMessage = ''">
 
-                            {{ successMessage }}
-                        </ngb-alert>
                         <hr>
 
 
                     </div>
 
 
-        
+
+
+
+
+
+
+                </div>
+                <div class="title text-white" *ngIf="isConnected == 'true'">
+                    <div class="col-md-5 p-lg-5 mx-auto my-2">
+
+
+                        <h1 class="display-4 font-weight-normal text-white">¡Conexión detectada!</h1>
+
+                        <p>
+                            Ya has iniciado una conexión, para realizar una nueva conexión, por favor, pulsa reiniciar.
+                        </p>
+                        <hr>
+                        <button class="btn btn-outline-danger" (click)="conectar()">
+                            REINICIAR CONEXIÓN
+                        </button>
+
+                        <hr>
+
+
+                    </div>
+
+
+
 
 
 
@@ -46,21 +71,26 @@
 
                 </div>
 
-                <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3 " [ngClass]="{ 'd-md-flex flex-md-equal w-100 my-md-3 ps-md-3': flag, 'responsive': !flag} ">
+                <div *ngIf="isConnected == 'false' " class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3 "
+                    [ngClass]="{ 'd-md-flex flex-md-equal w-100 my-md-3 ps-md-3': flag, 'responsive': !flag} ">
                     <div *ngFor="let board of boards">
 
-                        <div class=" me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center " [ngClass]="{ ' me-md-3 pt-3 px-3 pt-md-5 px-md-5': flag, 'responsive': !flag} ">
-                            <div class=" mx-auto " style="width: 100%; height: 80%; border-radius: 21px; text-align: center;">
+                        <div class=" me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center "
+                            [ngClass]="{ ' me-md-3 pt-3 px-3 pt-md-5 px-md-5': flag, 'responsive': !flag} ">
+                            <div class=" mx-auto "
+                                style="width: 100%; height: 80%; border-radius: 21px; text-align: center;">
                                 <div class="wrapper">
 
                                     <div class="card">
                                         <div class="toggle" *ngIf="board.connected==false" style="margin-top: 12%">
-                                            <input type="checkbox" ng-model="board.connected" (change)="board.connected = !board.connected">
+                                            <input type="checkbox" ng-model="board.connected"
+                                                (change)="board.connected = !board.connected">
                                             <span class="button"></span>
                                             <span class="label">+</span>
                                         </div>
                                         <div class="toggle" *ngIf="board.connected==true" style="margin-top: 12%">
-                                            <input type="checkbox" ng-model="board.connected" (change)="board.connected = !board.connected">
+                                            <input type="checkbox" ng-model="board.connected"
+                                                (change)="board.connected = !board.connected">
                                             <span class="button"></span>
                                             <span class="label">-</span>
                                         </div>
@@ -68,14 +98,17 @@
                                             <img src="../../assets/mcu2.png" alt="groot-img">
                                         </div>
                                         <div class="text-container ">
-                                            <h2>Dispositivo ESP8266</h2>
-                                            <h2>connected: {{board.connected}}</h2>
+                                            <h2>Dispositivo ESP8266 <span
+                                                    *ngIf="board.connected == false">🔴</span><span
+                                                    *ngIf="board.connected == true">🟢</span>
+                                            </h2>
                                             <p>
-                                                IP: {{board.host}}
+                                                IP: <span class=text-danger>{{board.host}}</span>
                                             </p>
-                                            <p>Puerto: {{board.port}} </p>
-                                            <p> Modos asociados: [{{board.mode}}] </p>
-
+                                            <p>Puerto: <span class=text-danger>{{board.port}}</span>  </p>
+                                            <p> Modos asociados: [ <span class="text-danger"
+                                                *ngFor="let mode of board.mode">{{mode.name}} <span class="text-white">,</span> </span>
+                                            ] </p>
 
                                         </div>
                                     </div>
@@ -95,9 +128,11 @@
 
 
     </main>
+
 </div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js " integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin=" anonymous "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js "
+    integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin=" anonymous "></script>
 
 </html>

@@ -8,7 +8,7 @@ export class LogServiceService {
 
   constructor(private http: HttpClient) { }
 
-  private url: string = "http://192.168.1.137:4000/api/log";
+  private url: string = "http://localhost:4000/api/log";
 
   
   
@@ -17,8 +17,8 @@ export class LogServiceService {
     return this.http.post<any>(this.url, {username:username, logMessage: logMsg}); //TODO: REVISAR!
   }
 
-  getLogs(){
-    return this.http.get<any>(this.url);
+  getLogs(page:number){
+    return this.http.get<any>(this.url+"?page="+page);
   }
   
 

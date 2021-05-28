@@ -4,5 +4,6 @@ export interface RutinesProps {
     deviceID: String; //boardID y type
     action: String; //toggle, on,  off....
     time: String;
+    date: String;
     repeat: String;
 }

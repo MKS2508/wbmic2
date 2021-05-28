@@ -66,9 +66,10 @@ export class RutinasComponent implements OnInit {
    var  rutine: RutinesProps = {
       id: '',
       name: this.nombre.value,
-      action: this.accion.value,
+      action: this.deviceID.value+'/'+this.accion.value,
       deviceID: this.deviceID.value,
-      time: this.fecha.value + ' / '+this.hora.value,
+      time: this.hora.value+':00',
+      date: this.fecha.value,
       repeat: this.repeticion.value
       
     }

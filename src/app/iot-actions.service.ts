@@ -13,11 +13,11 @@ export class IotActionsService {
 
   constructor(private http: HttpClient) { }
 
-  private url: string = "http://192.168.1.137:4000/api/iot/connect";
-  private url2: string = "http://192.168.1.137:4000/api/iot/setModes";
-  private url3: string = "http://192.168.1.137:4000/api/iot/resetModes";
-  private url4: string = "http://192.168.1.137:4000/api/iot/";
-  private url5: string = "http://192.168.1.137:4000/api/iot/disconnect";
+  private url: string = "http://localhost:4000/api/iot/connect";
+  private url2: string = "http://localhost:4000/api/iot/setModes";
+  private url3: string = "http://localhost:4000/api/iot/resetModes";
+  private url4: string = "http://localhost:4000/api/iot/";
+  private url5: string = "http://localhost:4000/api/iot/disconnect";
 
   token:any = ''
 
@@ -30,14 +30,18 @@ export class IotActionsService {
     return this.http.post<any>(this.url4 + productId + "/" +  deviceId + "/action/" +action,{data:data, pines: pines}, httpOptions); //TODO: REVISAR!
     
   }
-  
+  isConnected(){
+    return this.http.get<any>(this.url4 + "isconnected/"); //TODO: REVISAR!
+  }
   connect(productsId: String[]){
     this.token= localStorage.getItem('JWT_token')
     const httpOptions = {
 
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' , 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'X-Requested-With,content-type', 'x-access-token':this.token })
     };
-    return this.http.post<BoardProps[]>(this.url, {productsID:productsId}, httpOptions); //TODO: REVISAR!
+      return      this.http.post<BoardProps[]>(this.url, {productsID:productsId}, httpOptions); //TODO: REVISAR!
+
+
   }
   
 

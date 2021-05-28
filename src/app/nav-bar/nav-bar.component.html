@@ -70,23 +70,44 @@
                     </a>
 
                     <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-                        <li>
+                        <li *ngIf="pag != 'home'">
                             <a class="nav-link text-secondary " (click)="cambiarPag( 'home') ">
                                 <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#home "/></svg> Inicio
                             </a>
                         </li>
-                        <li>
-                            <a class="nav-link text-white " (click)="cambiarPag( 'iotMenu') ">
+                        <li *ngIf="pag == 'home'">
+                            <a class="nav-link text-primary " (click)="cambiarPag( 'home') ">
+                                <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#home "/></svg> Inicio
+                            </a>
+                        </li>
+                        <li *ngIf="pag == 'iotMenu'">
+                            <a class="nav-link text-primary " (click)="cambiarPag( 'iotMenu') ">
                                 <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#speedometer2 "/></svg> Conectar
                             </a>
                         </li>
-                        <li>
-                            <a class="nav-link text-white " (click)="cambiarPag( 'rutinas') ">
+                        <li *ngIf="pag != 'iotMenu'">
+                            <a class="nav-link text-secondary" (click)="cambiarPag( 'iotMenu') ">
+                                <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#speedometer2 "/></svg> Conectar
+                            </a>
+                        </li>
+                        <li *ngIf="pag != 'rutinas'">
+                            <a class="nav-link text-secondary " (click)="cambiarPag( 'rutinas') ">
                                 <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#table "/></svg> Rutinas
                             </a>
                         </li>
-                        <li *ngIf="user.roles.includes('moderator')">
-                            <a class="nav-link text-white " (click)="cambiarPag( 'boardsMenu') ">
+                        <li *ngIf="pag == 'rutinas'">
+                            <a class="nav-link text-primary " (click)="cambiarPag( 'rutinas') ">
+                                <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#table "/></svg> Rutinas
+                            </a>
+                        </li>
+                        <li *ngIf="pag == 'boardsMenu'" >
+                            <a class="nav-link text-primary " (click)="cambiarPag( 'boardsMenu') " *ngIf="user.roles.includes('moderator')">
+                                <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#grid "/></svg> Panel de control
+                            </a>
+                            
+                        </li>
+                        <li *ngIf="pag != 'boardsMenu'" >
+                            <a class="nav-link text-secondary " (click)="cambiarPag( 'boardsMenu') " >
                                 <svg class="bi d-block mx-auto mb-1 " width="24 " height="24 "><use xlink:href="#grid "/></svg> Panel de control
                             </a>
                         </li>

@@ -10,15 +10,15 @@ export class DevicesServiceService {
 //solo estaran los conectados, si nos desconectamos, se borra los datos de la tabla
 constructor(private http: HttpClient) { }
 token:any = '';
-private url: string = "http://192.168.1.137:4000/api/iot/connected/";
+private url: string = "http://localhost:4000/api/iot/connected";
 
-getDevices(){
+getDevices(pag:number){
   this.token= localStorage.getItem('JWT_token')
   const httpOptions = {
 
     headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' , 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'X-Requested-With,content-type', 'x-access-token':this.token })
   };
-  return this.http.get<DeviceProps[]>(this.url, httpOptions);
+  return this.http.get<any>(this.url+"?page="+pag+"&limit=3", httpOptions);
 }
 
 getDevice(id: string){
@@ -27,7 +27,7 @@ getDevice(id: string){
 
     headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' , 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'X-Requested-With,content-type', 'x-access-token':this.token })
   };
-  return this.http.get<DeviceProps>(this.url+id);
+  return this.http.get<DeviceProps>(this.url+"/"+id);
 }
 
 postDevice(newObject: any){
@@ -45,7 +45,7 @@ putDevice(newObject: any, id:number){
 
     headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' , 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'X-Requested-With,content-type', 'x-access-token':this.token })
   };
-  return this.http.put<DeviceProps>(this.url+id, newObject, httpOptions);
+  return this.http.put<DeviceProps>(this.url+"/"+id, newObject, httpOptions);
 }
 //
 deleteDevices(idObject: number){
@@ -57,7 +57,7 @@ deleteDevices(idObject: number){
     };
   
 
-   return this.http.delete<BoardProps>(this.url+idObject, httpOptions);
+   return this.http.delete<BoardProps>(this.url+"/"+idObject, httpOptions);
   
 }
 }

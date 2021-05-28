@@ -27,11 +27,11 @@
                             <div class="input-group">
                                 <input class="form-control" placeholder="192.168.1.1" type="text" [formControl]="nombre">
                             </div>
-                            <label>ID del dispositivo conectado: </label>
+                            <label>Dirección del dispositivo: </label>
+                            <p>La dirección de los dispositivo se encuentra en la pastaña principal.</p>
                             <div class="input-group">
                                 <input class="form-control" placeholder="3030" type="text" [formControl]="deviceID">
                             </div>
-
                             <label>Acción</label>
                             <div class="input-group">
                                 <input class="form-control" placeholder="3030" type="text" [formControl]="accion">
@@ -43,12 +43,14 @@
                             </div>
                             <label>Hora</label>
                             <div class="input-group">
-                                <input class="form-control" type="time" [formControl]="hora">
+                                <input class="form-control" type="time" [formControl]="hora" pattern="hh:mm:ss">
                             </div>
                             <label>Repetición</label>
-                            <div class="input-group">
-                                <input class="form-control" placeholder="3030" type="text" [formControl]="repeticion">
-                            </div>
+                            <input [formControl]="repeticion" class="form-control" list="browsers" name="browser" id="browser">
+                            <datalist id="browsers">
+                              <option value="everyday">
+                              <option value="once">
+                            </datalist>
                         </div>
                         <button style="margin-left: 35%;" type="button" class="btn btn-outline-primary" (click)=" insertNew() " (click)="modal.close( 'Save click') ">Guardar</button>
 
@@ -64,14 +66,14 @@
                     <div class="col-md-5 p-lg-5 mx-auto my-2">
 
 
-                        <h1 class="display-4 font-weight-normal ">Agregar nuevas rutinas</h1>
-                        <hr>
-                        <button class="btn btn-lg btn-outline-primary " (click)="open(content) ">Crear rutina</button>
+                        <h1 class="display-4 font-weight-normal text-light ">Agregar nuevas rutinas</h1>
+<hr>
 
-
-                        <p>
-                            <img src="https://img.icons8.com/ios-filled/50/000000/integrated-circuit.png" /> Un dispositivo puede contener múltiples rutinas definidas.
+                        <p class="display-8 font-weight-normal text-light">
+                             Un dispositivo puede contener múltiples rutinas definidas.
                         </p>
+                        <hr>
+                        <button class="btn btn-lg btn-outline-light " (click)="open(content) ">Crear rutina</button>
 
                         <hr>
 
@@ -99,6 +101,7 @@
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Dispositivo</th>
                                         <th scope="col">Accion</th>
+                                        <th scope="col">Fecha</th>
                                         <th scope="col">Hora</th>
                                         <th scope="col">Repeticion</th>
 
@@ -112,6 +115,7 @@
                                         </td>
                                         <td>{{ country.deviceID }}</td>
                                         <td>{{ country.action }}</td>
+                                        <td>{{ country.date }}</td>
                                         <td>{{ country.time }}</td>
                                         <td>{{ country.repeat}}</td>
 
@@ -134,7 +138,41 @@
 
     </main>
 </div>
+<footer class="container py-5"
+style="background-color: #263238; border-radius: 21px; width:93%; text-align:center">
+<div class="row">
+    <div class="col-12 col-md">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="d-block mb-2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+            <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+            <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+            <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+            <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+            <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+        </svg>
+        <p>Marcos Asensio</p>
+        <small class="d-block mb-3 text-muted">&copy;Curso 2020-2021</small>
+    </div>
+    <div class=" col-sm-4 col-md  col-6 col">
+        <h5 class="headin5_amrc col_white_amrc pt2"> Project Documentation </h5>
 
+        <!--headin5_amrc-->
+        <ul class="footer_ul_amrc">
+            <li><a href="http://webenlance.com">API REST Source Code</a></li>
+            <li><a href="http://webenlance.com">FRONT Source Code</a></li>
+            <li><a href="http://webenlance.com">Firmata Web</a></li>
+            <li><a href="http://webenlance.com">MQTT Broker</a></li>
+            <li><a href="http://webenlance.com">Johnny Five Library</a></li>
+            <li><a href="http://webenlance.com">ESP8266 Development Board</a></li>
+        </ul>
+        <!--footer_ul_amrc ends here-->
+    </div>
+
+</div>
+</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js " integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin=" anonymous "></script>
 

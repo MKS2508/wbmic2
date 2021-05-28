@@ -14,7 +14,6 @@
 <div class="blur">
 
     <main>
-        <div class="bigWrapper">
             <ng-template #content let-modal>
 
 
@@ -22,10 +21,11 @@
                     <form>
                         <div class="form-group" style="text-align:center;">
 
-                            
+
                             <label>Nombres</label>
                             <div class="input-group">
-                                <input class="form-control" placeholder="Arduino Salón" type="text" [formControl]="nombre">
+                                <input class="form-control" placeholder="Arduino Salón" type="text"
+                                    [formControl]="nombre">
                             </div>
                             <label>Dirección IP</label>
                             <div class="input-group">
@@ -36,42 +36,63 @@
                                 <input class="form-control" placeholder="3030" type="text" [formControl]="port">
                             </div>
                             <ul>
-                                <label>  Relé: </label >
+                                <label> Relé: </label>
 
                                 <li>
 
                                     <div class="input-group">
 
                                         <button class="btn btn-outline-primary" (click)="increaseN('rele')">+</button>
-                                        <span style="margin-top:8px">   {{nReles}}   </span>
+                                        <span style="margin-top:8px"> {{nReles}} </span>
                                         <button class="btn btn-outline-danger" (click)="decreaseN('rele')">-</button>
                                     </div>
                                 </li>
-                                <label>  RGB: </label >
+                                <label> RGB: </label>
 
                                 <li>
                                     <div class="input-group">
 
                                         <button class="btn btn-outline-primary" (click)="increaseN('rgb')">+</button>
-                                        <span style="margin-top:8px">   {{nRGB}}   </span>
+                                        <span style="margin-top:8px"> {{nRGB}} </span>
                                         <button class="btn btn-outline-danger" (click)="decreaseN('rgb')">-</button>
                                     </div>
                                 </li>
-                                <label>  Sensor de temperatura: </label >
+                                <label> Sensor de temperatura: </label>
 
                                 <li>
                                     <div class="input-group">
 
                                         <button class="btn btn-outline-primary" (click)="increaseN('sensor')">+</button>
-                                        <span style="margin-top:8px">   {{nSensores}}   </span>
+                                        <span style="margin-top:8px"> {{nSensores}} </span>
                                         <button class="btn btn-outline-danger" (click)="decreaseN('sensor')">-</button>
                                     </div>
                                 </li>
+                                <label> Piezo: </label>
+
+                                <li>
+                                    <div class="input-group">
+
+                                        <button class="btn btn-outline-primary" (click)="increaseN('piezo')">+</button>
+                                        <span style="margin-top:8px"> {{nPiezos}} </span>
+                                        <button class="btn btn-outline-danger" (click)="decreaseN('piezo')">-</button>
+                                    </div>
+                                </li>
+                                <label> Lámpara LED: </label>
+
+                                <li>
+                                    <div class="input-group">
+
+                                        <button class="btn btn-outline-primary" (click)="increaseN('lamp')">+</button>
+                                        <span style="margin-top:8px"> {{nLamps}} </span>
+                                        <button class="btn btn-outline-danger" (click)="decreaseN('lamp')">-</button>
+                                    </div>
+                                </li>
                             </ul>
-                           
+
 
                         </div>
-                        <button style="margin-left: 35%;" type="button" class="btn btn-outline-primary" (click)=" insertNew() " (click)="modal.close( 'Save click') ">Guardar</button>
+                        <button style="margin-left: 35%;" type="button" class="btn btn-outline-primary"
+                            (click)=" insertNew() " (click)="modal.close( 'Save click') ">Guardar</button>
 
                     </form>
                 </div>
@@ -86,56 +107,119 @@
                     <form>
                         <div class="form-group" style="text-align:center;">
 
-                            
+
                             <label>Nombres</label>
                             <div class="input-group">
-                                <input class="form-control"  [(ngModel)]="board2.name"  placeholder="Arduino Salón" type="text" [formControl]="nombre"  [value]=board2.name>
+                                <input class="form-control" [(ngModel)]="board2.name" placeholder="Arduino Salón"
+                                    type="text" [formControl]="nombre" [value]=board2.name>
                             </div>
                             <label>Dirección IP</label>
                             <div class="input-group">
-                                <input class="form-control" [(ngModel)]="board2.host" placeholder="192.168.1.1" type="text" [formControl]="host">
+                                <input class="form-control" [(ngModel)]="board2.host" placeholder="192.168.1.1"
+                                    type="text" [formControl]="host">
                             </div>
                             <label>Puerto</label>
                             <div class="input-group">
-                                <input class="form-control" [(ngModel)]="board2.port" placeholder="3030" type="text" [formControl]="port">
+                                <input class="form-control" [(ngModel)]="board2.port" placeholder="3030" type="text"
+                                    [formControl]="port">
                             </div>
                             <ul>
-                                <label>  Relé: </label >
+                                <label> Relé: </label>
 
                                 <li>
 
                                     <div class="input-group">
 
                                         <button class="btn btn-outline-primary" (click)="increaseN('rele')">+</button>
-                                        <span style="margin-top:8px">   {{nReles}}   </span>
+                                        <span style="margin-top:8px"> {{nReles}} </span>
                                         <button class="btn btn-outline-danger" (click)="decreaseN('rele')">-</button>
                                     </div>
                                 </li>
-                                <label>  RGB: </label >
+                                <label> RGB: </label>
 
                                 <li>
                                     <div class="input-group">
 
                                         <button class="btn btn-outline-primary" (click)="increaseN('rgb')">+</button>
-                                        <span style="margin-top:8px">   {{nRGB}}   </span>
+                                        <span style="margin-top:8px"> {{nRGB}} </span>
                                         <button class="btn btn-outline-danger" (click)="decreaseN('rgb')">-</button>
                                     </div>
                                 </li>
-                                <label>  Sensor de temperatura: </label >
+                                <label> Sensor de temperatura: </label>
 
                                 <li>
                                     <div class="input-group">
 
                                         <button class="btn btn-outline-primary" (click)="increaseN('sensor')">+</button>
-                                        <span style="margin-top:8px">   {{nSensores}}   </span>
+                                        <span style="margin-top:8px"> {{nSensores}} </span>
                                         <button class="btn btn-outline-danger" (click)="decreaseN('sensor')">-</button>
                                     </div>
                                 </li>
+
+                                <label> Piezo: </label>
+
+                                <li>
+                                    <div class="input-group">
+
+                                        <button class="btn btn-outline-primary" (click)="increaseN('piezo')">+</button>
+                                        <span style="margin-top:8px"> {{nPiezos}} </span>
+                                        <button class="btn btn-outline-danger" (click)="decreaseN('piezo')">-</button>
+                                    </div>
+                                </li>
+                                <label> Lámpara LED: </label>
+
+                                <li>
+                                    <div class="input-group">
+
+                                        <button class="btn btn-outline-primary" (click)="increaseN('lamp')">+</button>
+                                        <span style="margin-top:8px"> {{nLamps}} </span>
+                                        <button class="btn btn-outline-danger" (click)="decreaseN('lamp')">-</button>
+                                    </div>
+                                </li>
                             </ul>
-                           
+
 
                         </div>
-                        <button style="margin-left: 35%;" type="button" class="btn btn-outline-primary" (click)=" putBoard() " (click)="modal.close( 'Save click') ">Guardar</button>
+                        <button style="margin-left: 35%;" type="button" class="btn btn-outline-primary"
+                            (click)=" putBoard() " (click)="modal.close( 'Save click') ">Guardar</button>
+
+                    </form>
+                </div>
+
+
+
+            </ng-template>
+            <ng-template #content3 let-modal>
+
+
+                <div style="height: 400px" class="card2">
+                    <form>
+                        <div class="form-group" style="text-align:center;">
+
+
+                            <label>Nombre</label>
+                            <div class="input-group">
+                                <input class="form-control" [(ngModel)]="selectedUser.username" placeholder="Marcos"
+                                    type="text" [formControl]="nombre" readonly>
+                            </div>
+                      
+                            <label>Roles</label>
+                            <div class="input-group">
+                                Admin:
+                                <input [ngModelOptions]="{standalone: true}" checked class="form-control"  type="checkbox"
+                                     [(ngModel)]="adminRol" (change)="adminRol = !adminRol">
+                                Moderador:
+                                    <input [ngModelOptions]="{standalone: true}" class="form-control"  type="checkbox"
+                                     [(ngModel)]="moderatorRol" (change)="moderatorRol = !moderatorRol">
+                                Usuario base:
+                                    <input [ngModelOptions]="{standalone: true}" class="form-control" type="checkbox"
+                                    [(ngModel)]="baseRol" (change)="baseRol = !baseRol">
+                            </div>
+
+
+                        </div>
+                        <button style="margin-left: 35%;" type="button" class="btn btn-outline-primary"
+                            (click)=" editUser(selectedUser._id) " (click)="modal.close( 'Save click') ">Guardar</button>
 
                     </form>
                 </div>
@@ -145,18 +229,19 @@
             </ng-template>
 
 
-            <div class="bigCard " style="margin-top: 0; ">
 
-                <div class="title ">
+                <div class="title text-white ">
                     <div class="col-md-5 p-lg-5 mx-auto my-2 ">
 
 
                         <h1 class="display-4 font-weight-normal ">Agregar nuevos dispositivos</h1>
                         <hr>
-                        <button class="btn btn-lg btn-outline-primary " (click)="open(content) ">Crear dispositivo</button>
+                        <button class="btn btn-lg btn-outline-primary " (click)="open(content) ">Crear
+                            dispositivo</button>
 
                         <p>
-                            <img src="https://img.icons8.com/ios-filled/50/000000/integrated-circuit.png " /> Un dispositivo puede contener múltiples configuraciones.
+                            <img src="https://img.icons8.com/ios-filled/50/000000/integrated-circuit.png " /> Un
+                            dispositivo puede contener múltiples configuraciones.
                         </p>
 
                         <hr>
@@ -174,11 +259,13 @@
 
                 </div>
 
-                <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3 " [ngClass]="{ 'd-md-flex flex-md-equal w-100 my-md-3 ps-md-3': flag, 'responsive': !flag} ">
+                <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3 "
+                    [ngClass]="{ 'd-md-flex flex-md-equal w-100 my-md-3 ps-md-3': flag, 'responsive': !flag} ">
 
 
                     <div *ngFor="let board of boardPropsArr ">
-                        <div class=" me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center " [ngClass]="{ ' me-md-3 pt-3 px-3 pt-md-5 px-md-5': flag, 'responsive': !flag} ">
+                        <div class=" me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center "
+                            [ngClass]="{ ' me-md-3 pt-3 px-3 pt-md-5 px-md-5': flag, 'responsive': !flag} ">
                             <div class=" mx-auto " style="width: 100%; height: 80%; border-radius: 21px ">
                                 <div class="wrapper ">
 
@@ -190,14 +277,19 @@
                                         <div class="text-container ">
                                             <h2>Dispositivo ESP8266 - {{board.name}}</h2>
                                             <p>
-                                           IP: {{board.host}}
+                                                IP: <span class=text-danger>{{board.host}}</span>
                                             </p>
-                                            <p>Puerto: {{board.port}} </p>
-                                            <p> Modos asociados:  [{{board.mode}}]</p>
-
+                                            <p>Puerto: <span class=text-danger>{{board.port}}</span>  </p>
+                                            <p> Modos asociados: [ <span class="text-danger"
+                                                *ngFor="let mode of board.mode">{{mode.name}} <span class="text-white">,</span> </span>
+                                            ] </p>
                                             <div class="button-group " style="margin: 5% ">
-                                                <button type="button " style="margin-right: 5% " class="btn btn-outline-primary " (click)=edit(board._id); (click)=open(content2)>Editar</button>
-                                                <button type="button " style="margin-left: 5% " class="btn btn-outline-danger " (click)=delete(board._id);>Eliminar</button>
+                                                <button type="button " style="margin-right: 5% "
+                                                    class="btn btn-outline-primary " (click)=edit(board._id);
+                                                    (click)=open(content2)>Editar</button>
+                                                <button type="button " style="margin-left: 5% "
+                                                    class="btn btn-outline-danger "
+                                                    (click)=delete(board._id);>Eliminar</button>
                                             </div>
 
                                         </div>
@@ -209,20 +301,122 @@
                         </div>
                     </div>
 
+  
 
                 </div>
 
+                <div class="title text-white">
+                    <div class="col-md-5 p-lg-5 mx-auto my-2 ">
+
+
+                        <h1 class="display-4 font-weight-normal ">Logs de acciones</h1>
+                        <hr>
+                       
+
+                        <p>
+                            Todas las acciones realizadas en el dispositivo
+                        </p>
+
+                        <hr>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+              
+                
+
+        <div class="center">
+            <button *ngIf="pagina == 0"  class="btn btn-outline-danger"><</button>
+            <button *ngIf="pagina > 0" (click)="changePage(-1)"  class="btn btn-outline-danger"><</button>
+                        <button (click)="changePage(1)" class="btn btn-outline-primary">></button>
+        </div>
+      
+        <table style="background-color: white;" class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Accion</th>
+                    <th scope="col">Fecha</th>
+        
+        
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let log of logs; index as i">
+                    <th scope="row">{{ i + 1 }}</th>
+                 
+                    <td>{{ log.username }}</td>
+                    <td>{{ log.logMessage }}</td>
+                    <td>{{ log.logMessage }}</td>
+                    <td>{{ log.time }}</td>
+           
+        
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        
+        
+        <div class="title text-white">
+            <div class="col-md-5 p-lg-5 mx-auto my-2 ">
+
+
+                <h1 class="display-4 font-weight-normal ">Usuarios del sistema</h1>
+                <hr>
+               
+
+                <p>
+                    Todos los usuarios registrados en el sistema
+                </p>
+
+                <hr>
+
+
             </div>
+
+
+
+
+
         </div>
 
-
+        <table *ngIf="roles == 'true'" style="background-color: white" class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre de usuario</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Roles</th>
+        
+        
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users; index as i">
+                    <th scope="row">{{ i + 1 }}</th>
+                 
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>[{{ user.roles[0].name}}, {{ user.roles[1].name}}] <button (click)="getUserByID(user._id)" (click)="open(content3)"class="btn btn-primary">✏️</button></td>
+           
+        
+                </tr>
+            </tbody>
+        </table>
 
 
 
     </main>
 </div>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js " integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin=" anonymous "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js "
+    integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin=" anonymous "></script>
 
 </html>

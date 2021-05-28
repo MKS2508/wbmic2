@@ -1,6 +1,6 @@
 
 
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 import {ModalDismissReasons, NgbAlert, NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -52,6 +52,8 @@ export class MainMenuComponent implements OnInit {
   
   alerts: Alert[] = [];
   closeResult = '';
+  pagina: any = 1;
+  pag: any;
 
 
   open(content: any) {
@@ -121,18 +123,27 @@ export class MainMenuComponent implements OnInit {
   color:any
   flag = true;
   mostrarColor:Boolean = false;
+  @Output('pagina') pagina2 = new EventEmitter<String>();
+
+  cambiarPag(value: string) {
+    this.pagina2.emit(value);
+    this.pagina2.subscribe((data: any) => {
+      this.pag = data
+    })
+    console.log(value);
+  }
   cambiarColor(){
     this.mostrarColor = !this.mostrarColor;
   }
   cambiarFlag(){
     this.flag = !this.flag;
   }
-  getBoards(){
-    this.deviceService.getDevices().subscribe(data => {
+  getBoards(pag: number){
+    this.deviceService.getDevices(pag).subscribe(data => {
       console.log("BOARDS:")
       console.log(data);
 
-      this.connectedDevices = data;
+      this.connectedDevices = data.data;
 
 
 
@@ -147,7 +158,7 @@ export class MainMenuComponent implements OnInit {
     screenWidth = window.innerWidth;
     screenHeight = window.innerHeight;
     console.log(screenHeight)
-    this.getBoards()
+    this.getBoards(this.pagina)
    
 this.makeSuccesMessage()
   }
@@ -181,10 +192,23 @@ this.makeSuccesMessage()
   
       })
     }
-    this.getBoards()
-    this.getBoards()
+    this.getBoards(this.pagina)
+    this.getBoards(this.pagina)
 
   }
+
+
+  changePage(pag:number){
+    var pagina = this.pagina
+    console.log(pagina)
+    pagina = pagina + pag
+    console.log(pagina)
+    this.pagina = pagina
+    this.getBoards(this.pagina)
+    this.getBoards(this.pagina)
+
+  }
+  
   public makeSuccesMessage(){
     setTimeout(() => this.staticAlert.close(), 20000);
 

@@ -52,6 +52,7 @@ export class NavBarComponent implements OnInit {
   subscription: Subscription = new Subscription;
   public message: string = '';
   @Output() pagina = new EventEmitter<String>();
+  pag: String = 'home';
   alerts: Alert[] = [];
 
   constructor(  private iotActionsService: IotActionsService,private mqttService: MQTTService, private LoginService: LoginServiceService, private LogService: LogServiceService
@@ -60,6 +61,9 @@ export class NavBarComponent implements OnInit {
   }
   cambiarPag(value: string) {
     this.pagina.emit(value);
+    this.pagina.subscribe(data => {
+      this.pag = data
+    })
     console.log(value);
   }
 
