@@ -22,6 +22,7 @@ export class RutinasComponent implements OnInit {
   nombre = new FormControl('');
   accion = new FormControl('');
   hora = new FormControl('');
+  pin = new FormControl('');
 
   fecha = new FormControl('');
   deviceID = new FormControl('');
@@ -76,7 +77,7 @@ export class RutinasComponent implements OnInit {
    var  rutine: RutinesProps = {
       id: '',
       name: this.nombre.value,
-      action: this.deviceID.value+'/'+this.accion.value,
+      action: this.deviceID.value+'/'+this.accion.value+'/_'+this.pin.value,
       deviceID: this.deviceID.value,
       time: this.hora.value+':00',
       date: this.fecha.value,

@@ -37,9 +37,13 @@
                             <label>Acción</label>
                             <p>rgb/on - relay/toggle</p>
                             <div class="input-group">
-                                <input class="form-control" placeholder="3030" type="text" [formControl]="accion">
+                                <input class="form-control" placeholder="rgb/on" type="text" [formControl]="accion">
                             </div>
-
+                            <label>Pin</label>
+                            <p>0 - 2 - 14</p>
+                            <div class="input-group">
+                                <input class="form-control" placeholder="0" type="number" [formControl]="pin">
+                            </div>
                             <label>Fecha</label>
                             <div class="input-group">
                                 <input class="form-control" type="date" [formControl]="fecha">

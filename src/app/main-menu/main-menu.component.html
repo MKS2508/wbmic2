@@ -182,7 +182,14 @@
                                                                     src="https://img.icons8.com/dusk/64/000000/switch-on.png " />
                                                             </a>
                                                         </div>
-        
+                                                        <div class="btn ">
+                                                            <a
+                                                                (click)="sendAction(device.boardID, device.address, 'flash', '', device.pines)">
+                                                                FLASH
+                                                                <img width="50px"
+                                                                    src="https://img.icons8.com/dusk/64/000000/switch-on.png " />
+                                                            </a>
+                                                        </div>
                                                     </div>
         
         
@@ -252,6 +259,22 @@
                                                         <a
                                                             (click)="sendAction(device.boardID, device.address, 'toggle', '', device.pines)">
                                                             TOGGLE
+                                                            <img width="50px"
+                                                                src="https://img.icons8.com/dusk/64/000000/switch-on.png " />
+                                                        </a>
+                                                    </div>
+                                                    <div class="btn ">
+                                                        <a
+                                                            (click)="sendAction(device.boardID, device.address, 'flash', '', device.pines)">
+                                                            FLASH
+                                                            <img width="50px"
+                                                                src="https://img.icons8.com/dusk/64/000000/switch-on.png " />
+                                                        </a>
+                                                    </div>
+                                                    <div class="btn ">
+                                                        <a
+                                                            (click)="sendAction(device.boardID, device.address, 'stop', '', device.pines)">
+                                                            STOP
                                                             <img width="50px"
                                                                 src="https://img.icons8.com/dusk/64/000000/switch-on.png " />
                                                         </a>
@@ -543,7 +566,7 @@
                                                     <div class="btn ">
                                                         <a
                                                             (click)="sendAction(device.boardID, device.address, 'off', '', device.pines)">
-                                                            PLAY
+                                                            STOP
                                                             <img width="50px"
                                                                 src="https://img.icons8.com/dusk/64/000000/switch-on.png " />
                                                         </a>
